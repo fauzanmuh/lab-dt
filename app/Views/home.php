@@ -54,7 +54,7 @@
 <section id="team" style="background: #19586E;">
     <div class="container py-5" style="min-height: 416px;">
         <div class="row g-4 align-items-center">
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div class="d-flex flex-column justify-content-center">
                     <h2 class="text-white" style="font-size: 16px;">About Us</h2>
                     <h2 class="text-white" style="font-size: 40px; font-weight: bold;">Anggota Tim</h2>
@@ -64,12 +64,11 @@
                     </button>
                 </div>
             </div>
-            <div class="col-lg-8">
-                <div class="border border-white rounded-3 p-4 d-flex align-items-center"
+            <div class="col-lg-7">
+                <div class="border border-white rounded-3 p-4 d-flex flex-column flex-md-row align-items-center"
                     style="border-width: 2px !important; height: 318px;">
 
-                    <!-- Text -->
-                    <div class="flex-grow-1">
+                    <div class="flex-grow-1 text-center text-md-start order-2 order-md-1">
                         <h3 class="text-white fw-semibold" style="font-size: 28px;">
                             Yoppy Yunhasnawa, S.ST., M.Sc.
                         </h3>
@@ -78,13 +77,11 @@
                         </p>
                     </div>
 
-                    <!-- Foto -->
-                    <div class="ms-4">
+                    <div class="mb-3 mb-md-0 ms-md-4 order-1 order-md-2">
                         <img src="/assets/images/kepala-lab.png" alt="Foto Profile"
                             class="rounded-circle border border-white"
-                            style="width: 160px; height: 160px; object-fit: cover; border-width: 3px !important;">
+                            style="width: 170px; height: 170px; object-fit: cover; border-width: 3px !important;">
                     </div>
-
                 </div>
             </div>
         </div>
