@@ -1,0 +1,70 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar-brand {
+  font-size: 1.25rem;
+}
+.nav-link.active-link,
+.dropdown-toggle.active-link {
+  color: #119dce !important;
+  border-bottom: 3px solid #119dce;
+}
+
+/* Hero */
+#hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(90deg, #15995780, #155799),
+    url("/assets/images/hero.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  overflow: hidden;
+}
+
+.text-hero {
+  font-size: 58px;
+}
+.subtext-hero {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.gradient-text-hero {
+  background: linear-gradient(to right, #f8f8f8, #6ed882);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.about-gradient-text {
+  background: linear-gradient(to right, #314755, #26a0da);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* animasi */
+.animate-fade {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.animate-fade:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.animate-fade:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

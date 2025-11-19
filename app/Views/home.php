@@ -1,0 +1,93 @@
+<section id="hero">
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+        <h1 class="fw-bold mb-3 animate-fade text-hero text-white">Laboratorium <span class="gradient-text-hero">Data
+                Technology</span></h1>
+        <p class="subtext-hero animate-fade" style="animation-delay: .2s;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+        <div class="d-flex justify-content-center align-items-center gap-4" style="font-size: 20px;">
+            <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade"
+                style="animation-delay: .4s; background: #7ABC52;">
+                Explore Research
+            </button>
+            <button class="btn mt-2 px-4 py-2 fw-bold text-white border animate-fade"
+                style="animation-delay: .4s; background: transparent;">
+                View Galeri
+            </button>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container py-5">
+        <p class="fw-medium text-center" style="font-size: 16px; color: #5F983C;">Tentang Kami</p>
+        <h2 class="fw-bold about-gradient-text text-center mb-5" style="font-size: 40px;">Profil
+            Laboratorium</h2>
+        <div class="container">
+            <div class="row g-2">
+                <div class="col-lg-6 d-flex align-items-center">
+                    <img src="/assets/images/dt-logo.png" alt="" class="img-fluid" style="height: 250px;">
+                </div>
+                <div class="col-lg-6">
+                    <p class="text-black" style="text-align: justify; line-height: 1.8">
+                        Unit penunjang akademik di Jurusan Teknologi Informasi yang berfokus pada kegiatan pembelajaran,
+                        penelitian, serta pengembangan keilmuan di bidang teknologi berbasis data. Laboratorium ini
+                        menyediakan
+                        fasilitas praktikum dan riset yang mendukung penguasaan pengetahuan serta keterampilan mahasiswa
+                        dalam
+                        pengolahan data, analisis big data, kecerdasan buatan, dan machine learning. Selain sebagai
+                        sarana
+                        praktikum, Laboratorium Teknologi Data juga berperan sebagai pusat penelitian dan pengembangan
+                        bagi dosen
+                        maupun mahasiswa.
+                    </p>
+                    <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
+                        style="animation-delay: .4s; background: #7ABC52;">
+                        Selengkapnya
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="team" style="background: #19586E;">
+    <div class="container py-5" style="min-height: 416px;">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-4">
+                <div class="d-flex flex-column justify-content-center">
+                    <h2 class="text-white" style="font-size: 16px;">About Us</h2>
+                    <h2 class="text-white" style="font-size: 40px; font-weight: bold;">Anggota Tim</h2>
+                    <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
+                        style="animation-delay: .4s; background: #7ABC52; width: fit-content;">
+                        Selengkapnya
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="border border-white rounded-3 p-4 d-flex align-items-center"
+                    style="border-width: 2px !important; height: 318px;">
+
+                    <!-- Text -->
+                    <div class="flex-grow-1">
+                        <h3 class="text-white fw-semibold" style="font-size: 28px;">
+                            Yoppy Yunhasnawa, S.ST., M.Sc.
+                        </h3>
+                        <p class="text-white mb-0" style="font-size: 18px;">
+                            Kepala Lab Teknologi Data
+                        </p>
+                    </div>
+
+                    <!-- Foto -->
+                    <div class="ms-4">
+                        <img src="/assets/images/kepala-lab.png" alt="Foto Profile"
+                            class="rounded-circle border border-white"
+                            style="width: 160px; height: 160px; object-fit: cover; border-width: 3px !important;">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
