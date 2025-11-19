@@ -194,3 +194,12 @@
         </div>
     </div>
 </section>
+
+<section id="publication">
+    <div class="container py-5">
+        <div class="d-flex flex-column gap-2 mb-4">
+            <h2 class="text-black" style="font-size: 16px;">Publikasi</h2>
+            <h2 class="text-black" style="font-size: 40px; font-weight: bold;">Publication</h2>
+        </div>
+    </div>
+</section>
