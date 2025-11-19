@@ -155,3 +155,42 @@
         </div>
     </div>
 </section>
+
+<section id="focusRiset" style="background: #19586E;">
+    <div class="container py-5">
+        <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-4">
+            <h2 class="text-white" style="font-size: 16px;">About Us</h2>
+            <h2 class="text-white" style="font-size: 40px; font-weight: bold;">Focus Riset</h2>
+        </div>
+
+        <div class="row justify-content-center g-4">
+
+            <!-- Item -->
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
+                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
+                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
+                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
+                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
+                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
