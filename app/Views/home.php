@@ -88,3 +88,70 @@
     </div>
     </div>
 </section>
+
+<section id="visimisi">
+    <div class="container py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-3">
+                <div class="d-flex flex-column justify-content-center">
+                    <h2 style="color: #5F983C; font-size: 16px;">About Us</h2>
+                    <h2 class="text-vision-gradient" style="font-size: 40px; font-weight: bold;">Our Vision & Mission
+                    </h2>
+                    <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
+                        style="animation-delay: .4s; background: #7ABC52; width: fit-content;">
+                        Selengkapnya
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="d-flex flex-column gap-4">
+
+                    <!-- Vision Card -->
+                    <div class="shadow rounded-3 p-4 d-flex flex-column align-items-start"
+                        style="min-height: 180px; background: #fff;">
+
+                        <!-- Icon -->
+                        <div class="me-3">
+                            <img src="/assets/svg/mdi_thunder-outline.svg" alt="icon" class="rounded-circle p-2"
+                                style="width: 50px; height: 50px; background: #7ABC52;">
+                        </div>
+
+                        <!-- Text -->
+                        <div>
+                            <h3 class="fw-bold mt-4" style="font-size: 24px;">Vision</h3>
+                            <p class="mb-0" style="font-size: 16px; line-height: 1.6;">
+                                Menjadi organisasi riset terkemuka dalam penelitian maupun pengembangan untuk
+                                mendorong inovasi teknologi serta keilmuan di bidang penyimpanan,
+                                pengolahan, dan rekayasa sistem data yang berkelanjutan
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Mission Card -->
+                    <div class="shadow rounded-3 p-4 d-flex flex-column align-items-start"
+                        style="min-height: 180px; background: #fff;">
+
+                        <!-- Icon -->
+                        <div class="me-3">
+                            <img src="/assets/svg/mdi_thunder-outline.svg" alt="icon" class="rounded-circle p-2"
+                                style="width: 50px; height: 50px; background: #7ABC52;">
+                        </div>
+
+                        <!-- Text -->
+                        <div>
+                            <h3 class="fw-bold mt-3" style="font-size: 24px;">Mission</h3>
+                            <p class="mb-0" style="font-size: 16px; line-height: 1.6;">
+                                Menjadi organisasi riset terkemuka dalam penelitian maupun pengembangan untuk
+                                mendorong inovasi teknologi serta keilmuan di bidang penyimpanan,
+                                pengolahan, dan rekayasa sistem data yang berkelanjutan
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

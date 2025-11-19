@@ -46,6 +46,12 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.text-vision-gradient {
+  background: linear-gradient(to right, #314755, #26a0da);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 /* animasi */
 .animate-fade {
