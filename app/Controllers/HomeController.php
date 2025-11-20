@@ -31,4 +31,11 @@ class HomeController extends Controller
             'title' => 'About Us'
         ]);
     }
+
+    public function loginPage(Request $request): Response
+    {
+        return $this->view('login', [
+            'title' => 'Login - Profile Lab DT'
+        ]);
+    }
 }

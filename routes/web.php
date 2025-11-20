@@ -17,6 +17,7 @@ $router = $app->router();
 
 $router->get('/', [HomeController::class, 'index']);
 $router->get('/about', [HomeController::class, 'about']);
+$router->get('/login', [HomeController::class, 'loginPage']);
 
 // ============================================
 // Example Routes (Commented for Reference)
