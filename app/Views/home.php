@@ -307,3 +307,66 @@
         </div>
     </div>
 </section>
+
+<section id="publication">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <h2 style="color: #5F983C; font-size: 16px;">Contact</h2>
+                <h2 class="text-vision-gradient" style="font-size: 40px; font-weight: bold;">Let's build something
+                    meaningful together
+                </h2>
+                <p class="all-text-gradient" style="font-size: 18px;">We welcome collaborations with fellow researchers,
+                    students, and industry partners. Reach out to learn how we can co-create impactful data solutions.
+                </p>
+                <div class="d-flex align-items-center gap-3 rounded all-text-gradient">
+                    <i class="bi bi-envelope d-flex justify-content-center align-items-center rounded-circle"
+                        style="background:#4288A133; width:50px; height:50px; font-size:22px;"></i>
+                    <div class="d-flex flex-column">
+                        <span class="fw-semibold">Email</span>
+                        <span class="text-muted">datatechlab@college.edu</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="shadow p-4 bg-white border rounded-3">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="mb-2">
+                                    <label for="name" class="form-label fw-semibold" style="color: #314755;">Full
+                                        Name<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" aria-describedby="name" name="name"
+                                        id="myInput">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="mb-2">
+                                    <label for="email" class="form-label fw-semibold" style="color: #314755;">Email
+                                        Address<span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" aria-describedby="email" name="email"
+                                        id="myInput">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <label for="organization" class="form-label fw-semibold"
+                                style="color: #314755;">Organization<span class="text-danger">*</span></label>
+                            <input type="organization" class="form-control" aria-describedby="organization"
+                                name="organization" id="myInput">
+                        </div>
+                        <div class="mt-3">
+                            <label for="message" class="form-label fw-semibold" style="color: #314755;">How Can we
+                                Help?</label>
+                            <textarea class="form-control" name="message" id="message" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn mt-4 w-100 py-2 fw-bold text-white rounded-3"
+                            style="background: #7ABC52;">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
