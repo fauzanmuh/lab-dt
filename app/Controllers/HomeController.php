@@ -32,6 +32,13 @@ class HomeController extends Controller
         ]);
     }
 
+    public function galleryPage(Request $request): Response
+    {
+        return $this->view('gallery', [
+            'title' => 'Gallery - Profile Lab DT'
+        ]);
+    }
+
     public function loginPage(Request $request): Response
     {
         return $this->view('login', [

@@ -87,6 +87,32 @@ body {
   }
 }
 
+/* Custom Pagination */
+.custom-pagination .page-link {
+  border: none;
+  margin: 0 6px;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: 600;
+  color: #195666;
+}
+
+.custom-pagination .page-item.active .page-link {
+  background: #19586e;
+  color: white;
+}
+
+.custom-pagination .page-link.arrow {
+  background: #f0f0f0;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.custom-pagination .page-link:hover {
+  background: #19566633;
+  color: #195666;
+}
+
 /* Login Page */
 .btn-login {
   font-size: 0.9rem;
