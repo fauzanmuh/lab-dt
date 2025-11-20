@@ -198,8 +198,78 @@
 <section id="publication">
     <div class="container py-5">
         <div class="d-flex flex-column gap-2 mb-4">
-            <h2 class="text-black" style="font-size: 16px;">Publikasi</h2>
-            <h2 class="text-black" style="font-size: 40px; font-weight: bold;">Publication</h2>
+            <h2 style="color: #5F983C; font-size: 16px;">Publikasi</h2>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-vision-gradient" style="font-size: 40px; font-weight: bold;">Publikasi
+                </h2>
+                <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
+                    style="animation-delay: .4s; background: #7ABC52; width: fit-content;">
+                    Selengkapnya
+                </button>
+            </div>
+
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <div class="card shadow rounded-3 p-3" style="min-height: 392px;">
+                        <p class="p-2 rounded-pill" style="background: #7ABC5233; color: #314755; font-size: 10px;">Most
+                            Citised</p>
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold lh-large" style="color: #314755; font-size: 18px;">Sistem
+                                Prediksi
+                                Penjualan Frozen Food dengan Metode Monte
+                                Carlo (Studi Kasus: Supermama Frozen Food)</h5>
+                            <p class="card-text" style="color: #575757BF; font-size: 12px;">2022</p>
+                        </div>
+                        <button class="btn border-2 p-3 fw-bold"
+                            style="border-color: #314755 !important; color: #314755;">Baca</button>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="card shadow rounded-3 p-3" style="min-height: 392px;">
+                        <p class="p-2 rounded-pill" style="background: #7ABC5233; color: #314755; font-size: 10px;">Most
+                            Citised</p>
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold lh-large" style="color: #314755; font-size: 18px;">Sistem
+                                Prediksi
+                                Penjualan Frozen Food dengan Metode Monte
+                                Carlo (Studi Kasus: Supermama Frozen Food)</h5>
+                            <p class="card-text" style="color: #575757BF; font-size: 12px;">2022</p>
+                        </div>
+                        <button class="btn border-2 p-3 fw-bold"
+                            style="border-color: #314755 !important; color: #314755;">Baca</button>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="card shadow rounded-3 p-3" style="min-height: 392px;">
+                        <p class="p-2 rounded-pill" style="background: #7ABC5233; color: #314755; font-size: 10px;">Most
+                            Citised</p>
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold lh-large" style="color: #314755; font-size: 18px;">Sistem
+                                Prediksi
+                                Penjualan Frozen Food dengan Metode Monte
+                                Carlo (Studi Kasus: Supermama Frozen Food)</h5>
+                            <p class="card-text" style="color: #575757BF; font-size: 12px;">2022</p>
+                        </div>
+                        <button class="btn border-2 p-3 fw-bold"
+                            style="border-color: #314755 !important; color: #314755;">Baca</button>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="card shadow rounded-3 p-3" style="min-height: 392px;">
+                        <p class="p-2 rounded-pill" style="background: #7ABC5233; color: #314755; font-size: 10px;">Most
+                            Citised</p>
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold lh-large" style="color: #314755; font-size: 18px;">Sistem
+                                Prediksi
+                                Penjualan Frozen Food dengan Metode Monte
+                                Carlo (Studi Kasus: Supermama Frozen Food)</h5>
+                            <p class="card-text" style="color: #575757BF; font-size: 12px;">2022</p>
+                        </div>
+                        <button class="btn border-2 p-3 fw-bold"
+                            style="border-color: #314755 !important; color: #314755;">Baca</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
