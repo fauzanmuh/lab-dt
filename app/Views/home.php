@@ -273,3 +273,37 @@
         </div>
     </div>
 </section>
+
+<section id="gallery" style="background: #E6E6E6;">
+    <div class="container py-5">
+        <div class="d-flex flex-column gap-2 mb-4">
+            <h2 style="color: #5F983C; font-size: 16px;">Tentang Kami</h2>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-vision-gradient" style="font-size: 40px; font-weight: bold;">Galeri
+                </h2>
+                <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
+                    style="animation-delay: .4s; background: #7ABC52; width: fit-content;">
+                    Selengkapnya
+                </button>
+            </div>
+
+            <div class="row justify-content-center align-items-center g-4">
+                <div class="col-lg-4">
+                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
+                </div>
+                <div class="col-lg-4">
+                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
+                </div>
+                <div class="col-lg-4">
+                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
+                </div>
+                <div class="col-lg-4">
+                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
+                </div>
+                <div class="col-lg-4">
+                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
