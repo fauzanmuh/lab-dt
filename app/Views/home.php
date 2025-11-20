@@ -288,19 +288,19 @@
             </div>
 
             <div class="row justify-content-center align-items-center g-4">
-                <div class="col-lg-4">
+                <div class="col-6 col-lg-4">
                     <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
                 </div>
-                <div class="col-lg-4">
+                <div class="col-6 col-lg-4">
                     <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
                 </div>
-                <div class="col-lg-4">
+                <div class="col-6 col-lg-4">
                     <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
                 </div>
-                <div class="col-lg-4">
+                <div class="col-6 col-lg-4">
                     <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
                 </div>
-                <div class="col-lg-4">
+                <div class="col-6 col-lg-4">
                     <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
                 </div>
             </div>
