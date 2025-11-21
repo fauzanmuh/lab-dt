@@ -39,6 +39,13 @@ class HomeController extends Controller
         ]);
     }
 
+    public function publicationPage(Request $request): Response
+    {
+        return $this->view('publications', [
+            'title' => 'Publication - Profile Lab DT'
+        ]);
+    }
+
     public function loginPage(Request $request): Response
     {
         return $this->view('login', [
