@@ -131,8 +131,23 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Card About */
+.card-about {
+  width: 344px;
+  height: 544px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card-about:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 768px) {
   .card-facility {
+    width: 100%;
+    height: auto;
+  }
+  .card-about {
     width: 100%;
     height: auto;
   }

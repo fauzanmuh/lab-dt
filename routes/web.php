@@ -16,7 +16,7 @@ $router = $app->router();
 // ============================================
 
 $router->get('/', [HomeController::class, 'index']);
-$router->get('/about', [HomeController::class, 'about']);
+$router->get('/about', [HomeController::class, 'aboutPage']);
 $router->get('/facility', [HomeController::class, 'FacilityPage']);
 $router->get('/gallery', [HomeController::class, 'galleryPage']);
 $router->get('/publications', [HomeController::class, 'publicationPage']);

@@ -25,10 +25,10 @@ class HomeController extends Controller
     /**
      * Display about page
      */
-    public function about(Request $request): Response
+    public function aboutPage(Request $request): Response
     {
         return $this->view('about', [
-            'title' => 'About Us'
+            'title' => 'About Us - Profile Lab DT'
         ]);
     }
 
