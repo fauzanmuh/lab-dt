@@ -51,41 +51,40 @@
     </div>
 </section>
 
-<section id="team" style="background: #19586E;">
-    <div class="container py-5" style="min-height: 416px;">
-        <div class="row g-4 align-items-center">
-            <div class="col-lg-5">
-                <div class="d-flex flex-column justify-content-center">
-                    <h2 class="text-white" style="font-size: 16px;">About Us</h2>
-                    <h2 class="text-white" style="font-size: 40px; font-weight: bold;">Anggota Tim</h2>
-                    <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
-                        style="animation-delay: .4s; background: #7ABC52; width: fit-content;">
-                        Selengkapnya
-                    </button>
-                </div>
+<section id="team" style="background: #F0F0F0;">
+    <div class="container py-5 text-center">
+        <!-- Title -->
+        <h2 class="all-text-gradient" style="font-size: 16px; font-weight: 600;">About Us</h2>
+        <h2 class="all-text-gradient" style="font-size: 36px; font-weight: bold;">Anggota Tim</h2>
+
+        <!-- Team Members -->
+        <div class="row justify-content-center mt-5 g-4">
+            <div class="col-6 col-lg-3">
+                <img src="/assets/images/kepala-lab.png" class="rounded-circle"
+                    style="width: 260px; height: auto; object-fit: cover;">
+                <h4 class="mt-3 all-text-gradient fw-bold">Nama</h4>
+                <p style="color:#5F983C;">Nama</p>
             </div>
-            <div class="col-lg-7">
-                <div class="border border-white rounded-3 p-4 d-flex flex-column flex-md-row align-items-center"
-                    style="border-width: 2px !important; height: 318px;">
-
-                    <div class="flex-grow-1 text-center text-md-start order-2 order-md-1">
-                        <h3 class="text-white fw-semibold" style="font-size: 28px;">
-                            Yoppy Yunhasnawa, S.ST., M.Sc.
-                        </h3>
-                        <p class="text-white mb-0" style="font-size: 18px;">
-                            Kepala Lab Teknologi Data
-                        </p>
-                    </div>
-
-                    <div class="mb-3 mb-md-0 ms-md-4 order-1 order-md-2">
-                        <img src="/assets/images/kepala-lab.png" alt="Foto Profile"
-                            class="rounded-circle border border-white"
-                            style="width: 170px; height: 170px; object-fit: cover; border-width: 3px !important;">
-                    </div>
-                </div>
+            <div class="col-6 col-lg-3">
+                <img src="/assets/images/kepala-lab.png" class="rounded-circle"
+                    style="width: 260px; height: auto; object-fit: cover;">
+                <h4 class="mt-3 all-text-gradient fw-bold">Nama</h4>
+                <p style="color:#5F983C;">Nama</p>
+            </div>
+            <div class="col-12 col-lg-3">
+                <img src="/assets/images/kepala-lab.png" class="rounded-circle"
+                    style="width: 260px; height: auto; object-fit: cover;">
+                <h4 class="mt-3 all-text-gradient fw-bold">Nama</h4>
+                <p style="color:#5F983C;">Nama</p>
             </div>
         </div>
-    </div>
+
+        <!-- Button -->
+        <button class="btn px-4 py-2 mt-4 fw-bold"
+            style="border: 2px solid #19586E; color:#19586E; border-radius:10px;">
+            Selengkapnya
+        </button>
+
     </div>
 </section>
 
