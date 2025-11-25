@@ -154,7 +154,7 @@
         <h2 class="fw-bold mt-4" style="color: #575757; font-size: 32px;">Kegiatan & Proyek</h2>
         <div class="row g-4 mb-5">
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -182,7 +182,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -196,7 +196,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -210,7 +210,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -224,7 +224,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -242,7 +242,7 @@
         <h2 class="fw-bold mt-4" style="color: #575757; font-size: 32px;">Perkuliahan Terkait</h2>
         <div class="row g-4 mb-5">
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -256,7 +256,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -270,7 +270,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -284,7 +284,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -298,7 +298,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
@@ -312,7 +312,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="card shadow rounded-3 p-3">
+                <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
                         <img src="/assets/images/WorkStation.png" alt="Facility Image" class="mx-auto d-block"
                             style="width: 90px; height: auto; object-fit: cover;">
