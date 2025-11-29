@@ -15,7 +15,7 @@ return [
     | Application Timezone
     |--------------------------------------------------------------------------
     */
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -24,11 +24,11 @@ return [
     */
     'database' => [
         'driver' => 'pgsql',
-        'host' => 'localhost',
+        'host' => '40.81.228.120',
         'port' => 5432,
         'database' => 'pbl_dt',
-        'username' => 'jergal',
-        'password' => 'defalt',
+        'username' => 'postgres',
+        'password' => '$d%NonV7t842aXVD',
         'charset' => 'utf8',
     ],
 ];

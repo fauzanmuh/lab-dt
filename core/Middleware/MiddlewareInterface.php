@@ -2,7 +2,7 @@
 
 namespace Core\Middleware;
 
-use Core\Http\Request;
+
 use Closure;
 
 /**
@@ -14,9 +14,9 @@ interface MiddlewareInterface
     /**
      * Handle an incoming request
      *
-     * @param Request $request
+     * @param $request
      * @param Closure $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next);
+    public function handle($request, Closure $next);
 }

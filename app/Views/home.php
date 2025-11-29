@@ -1,152 +1,148 @@
 <section id="hero">
-    <div class="container d-flex flex-column justify-content-center align-items-center">
-        <h1 class="fw-bold mb-3 animate-fade text-hero text-white">Laboratorium <span class="gradient-text-hero">Data
+    <div class="container d-flex flex-column justify-content-center align-items-center text-center">
+        <h1 class="fw-bold mb-4 animate-fade text-hero text-white">Laboratorium <span class="gradient-text-hero">Data
                 Technology</span></h1>
-        <p class="subtext-hero animate-fade" style="animation-delay: .2s;">
+        <p class="subtext-hero animate-fade mb-5" style="animation-delay: .2s; max-width: 800px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
-        <div class="d-flex justify-content-center align-items-center gap-4" style="font-size: 20px;">
-            <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade"
-                style="animation-delay: .4s; background: #7ABC52;">
+        <div class="d-flex justify-content-center align-items-center gap-3" style="font-size: 18px;">
+            <a href="/publications" class="btn btn-modern btn-primary-custom animate-fade"
+                style="animation-delay: .4s; text-decoration: none;">
                 Explore Research
-            </button>
-            <button class="btn mt-2 px-4 py-2 fw-bold text-white border animate-fade"
-                style="animation-delay: .4s; background: transparent;">
+            </a>
+            <a href="/gallery" class="btn btn-modern btn-outline-custom animate-fade"
+                style="animation-delay: .4s; text-decoration: none;">
                 View Galeri
-            </button>
+            </a>
         </div>
     </div>
 </section>
 
-<section id="about">
-    <div class="container py-5">
-        <p class="fw-medium text-center" style="font-size: 16px; color: #5F983C;">Tentang Kami</p>
-        <h2 class="fw-bold about-gradient-text text-center mb-5" style="font-size: 40px;">Profil
-            Laboratorium</h2>
-        <div class="container">
-            <div class="row g-2">
-                <div class="col-lg-6 d-flex align-items-center">
-                    <img src="/assets/images/dt-logo.png" alt="" class="img-fluid" style="height: 250px;">
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="fw-bold text-uppercase" style="color: #7ABC52; letter-spacing: 1px;">Tentang Kami</p>
+            <h2 class="fw-bold display-5">Profil Laboratorium</h2>
+        </div>
+
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="/assets/images/dt-logo.png" alt="Lab Logo" class="img-fluid rounded-4 shadow-lg"
+                        style="background: white; padding: 2rem;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 rounded-4"
+                        style="background: rgba(122, 188, 82, 0.1); z-index: -1; transform: translate(-20px, -20px);">
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <p class="text-black" style="text-align: justify; line-height: 1.8">
+            </div>
+            <div class="col-lg-6">
+                <div class="card-modern p-4">
+                    <p class="text-muted mb-4" style="text-align: justify; font-size: 1.1rem;">
                         Unit penunjang akademik di Jurusan Teknologi Informasi yang berfokus pada kegiatan pembelajaran,
                         penelitian, serta pengembangan keilmuan di bidang teknologi berbasis data. Laboratorium ini
-                        menyediakan
-                        fasilitas praktikum dan riset yang mendukung penguasaan pengetahuan serta keterampilan mahasiswa
-                        dalam
-                        pengolahan data, analisis big data, kecerdasan buatan, dan machine learning. Selain sebagai
-                        sarana
-                        praktikum, Laboratorium Teknologi Data juga berperan sebagai pusat penelitian dan pengembangan
-                        bagi dosen
-                        maupun mahasiswa.
+                        menyediakan fasilitas praktikum dan riset yang mendukung penguasaan pengetahuan serta
+                        keterampilan mahasiswa
+                        dalam pengolahan data, analisis big data, kecerdasan buatan, dan machine learning.
                     </p>
-                    <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
-                        style="animation-delay: .4s; background: #7ABC52;">
+                    <p class="text-muted mb-4" style="text-align: justify; font-size: 1.1rem;">
+                        Selain sebagai sarana praktikum, Laboratorium Teknologi Data juga berperan sebagai pusat
+                        penelitian dan pengembangan
+                        bagi dosen maupun mahasiswa.
+                    </p>
+                    <a href="/about" class="btn btn-modern btn-primary-custom" style="text-decoration: none;">
                         Selengkapnya
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="team" style="background: #F0F0F0;">
-    <div class="container py-5 text-center">
+<section id="team" style="background: #f8f9fa;" class="section-padding">
+    <div class="container text-center">
         <!-- Title -->
-        <h2 class="all-text-gradient" style="font-size: 16px; font-weight: 600;">About Us</h2>
-        <h2 class="all-text-gradient" style="font-size: 36px; font-weight: bold;">Anggota Tim</h2>
+        <p class="fw-bold text-uppercase" style="color: #7ABC52; letter-spacing: 1px;">Anggota Tim</p>
+        <h2 class="fw-bold display-5 mb-5">Meet Our Team</h2>
 
         <!-- Team Members -->
-        <div class="row justify-content-center mt-5 g-4">
-            <div class="col-6 col-lg-3">
-                <img src="/assets/images/kepala-lab.png" class="rounded-circle"
-                    style="width: 260px; height: auto; object-fit: cover;">
-                <h4 class="mt-3 all-text-gradient fw-bold">Nama</h4>
-                <p style="color:#5F983C;">Nama</p>
+        <div class="row justify-content-center g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card-modern h-100 text-center p-4">
+                    <img src="/assets/images/kepala-lab.png" class="rounded-circle mb-3 shadow-sm"
+                        style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #f8f9fa;">
+                    <h4 class="fw-bold mb-1" style="font-size: 1.25rem;">Nama Lengkap</h4>
+                    <p class="text-muted mb-0" style="font-size: 0.9rem;">Kepala Laboratorium</p>
+                </div>
             </div>
-            <div class="col-6 col-lg-3">
-                <img src="/assets/images/kepala-lab.png" class="rounded-circle"
-                    style="width: 260px; height: auto; object-fit: cover;">
-                <h4 class="mt-3 all-text-gradient fw-bold">Nama</h4>
-                <p style="color:#5F983C;">Nama</p>
+            <div class="col-md-6 col-lg-3">
+                <div class="card-modern h-100 text-center p-4">
+                    <img src="/assets/images/kepala-lab.png" class="rounded-circle mb-3 shadow-sm"
+                        style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #f8f9fa;">
+                    <h4 class="fw-bold mb-1" style="font-size: 1.25rem;">Nama Lengkap</h4>
+                    <p class="text-muted mb-0" style="font-size: 0.9rem;">Asisten Laboratorium</p>
+                </div>
             </div>
-            <div class="col-12 col-lg-3">
-                <img src="/assets/images/kepala-lab.png" class="rounded-circle"
-                    style="width: 260px; height: auto; object-fit: cover;">
-                <h4 class="mt-3 all-text-gradient fw-bold">Nama</h4>
-                <p style="color:#5F983C;">Nama</p>
+            <div class="col-md-6 col-lg-3">
+                <div class="card-modern h-100 text-center p-4">
+                    <img src="/assets/images/kepala-lab.png" class="rounded-circle mb-3 shadow-sm"
+                        style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #f8f9fa;">
+                    <h4 class="fw-bold mb-1" style="font-size: 1.25rem;">Nama Lengkap</h4>
+                    <p class="text-muted mb-0" style="font-size: 0.9rem;">Researcher</p>
+                </div>
             </div>
         </div>
 
         <!-- Button -->
-        <button class="btn px-4 py-2 mt-4 fw-bold"
-            style="border: 2px solid #19586E; color:#19586E; border-radius:10px;">
-            Selengkapnya
-        </button>
+        <a href="/about" class="btn btn-modern btn-outline-custom mt-5"
+            style="border-color: #19586E; color: #19586E; text-decoration: none;">
+            Lihat Semua Anggota
+        </a>
 
     </div>
 </section>
 
-<section id="visimisi">
-    <div class="container py-5">
-        <div class="row g-4 align-items-center">
-            <div class="col-lg-3">
-                <div class="d-flex flex-column justify-content-center">
-                    <h2 style="color: #5F983C; font-size: 16px;">About Us</h2>
-                    <h2 class="text-vision-gradient" style="font-size: 40px; font-weight: bold;">Our Vision & Mission
-                    </h2>
-                    <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
-                        style="animation-delay: .4s; background: #7ABC52; width: fit-content;">
+<section id="visimisi" class="section-padding">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-4">
+                <div class="pe-lg-4">
+                    <p class="fw-bold text-uppercase" style="color: #7ABC52; letter-spacing: 1px;">Visi & Misi</p>
+                    <h2 class="fw-bold display-5 mb-4">Our Vision & Mission</h2>
+                    <p class="text-muted mb-4">
+                        Kami berkomitmen untuk menjadi pusat unggulan dalam riset dan pengembangan teknologi data.
+                    </p>
+                    <a href="/about" class="btn btn-modern btn-primary-custom" style="text-decoration: none;">
                         Selengkapnya
-                    </button>
+                    </a>
                 </div>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <div class="d-flex flex-column gap-4">
 
                     <!-- Vision Card -->
-                    <div class="shadow rounded-3 p-4 d-flex flex-column align-items-start"
-                        style="min-height: 180px; background: #fff;">
-
-                        <!-- Icon -->
-                        <div class="me-3">
-                            <img src="/assets/svg/mdi_thunder-outline.svg" alt="icon" class="rounded-circle p-2"
-                                style="width: 50px; height: 50px; background: #7ABC52;">
+                    <div class="card-modern d-flex flex-row align-items-start p-4">
+                        <div class="feature-icon-box flex-shrink-0 me-4">
+                            <i class="bi bi-eye"></i>
                         </div>
-
-                        <!-- Text -->
                         <div>
-                            <h3 class="fw-bold mt-4" style="font-size: 24px;">Vision</h3>
-                            <p class="mb-0" style="font-size: 16px; line-height: 1.6;">
-                                Menjadi organisasi riset terkemuka dalam penelitian maupun pengembangan untuk
-                                mendorong inovasi teknologi serta keilmuan di bidang penyimpanan,
-                                pengolahan, dan rekayasa sistem data yang berkelanjutan
+                            <h3 class="fw-bold mb-2">Vision</h3>
+                            <p class="text-muted mb-0" style="line-height: 1.7;">
+                                <?= $visi ? htmlspecialchars($visi['isi_konten']) : 'Menjadi organisasi riset terkemuka dalam penelitian maupun pengembangan untuk mendorong inovasi teknologi serta keilmuan di bidang penyimpanan, pengolahan, dan rekayasa sistem data yang berkelanjutan' ?>
                             </p>
                         </div>
-
                     </div>
 
                     <!-- Mission Card -->
-                    <div class="shadow rounded-3 p-4 d-flex flex-column align-items-start"
-                        style="min-height: 180px; background: #fff;">
-
-                        <!-- Icon -->
-                        <div class="me-3">
-                            <img src="/assets/svg/mdi_thunder-outline.svg" alt="icon" class="rounded-circle p-2"
-                                style="width: 50px; height: 50px; background: #7ABC52;">
+                    <div class="card-modern d-flex flex-row align-items-start p-4">
+                        <div class="feature-icon-box flex-shrink-0 me-4">
+                            <i class="bi bi-bullseye"></i>
                         </div>
-
-                        <!-- Text -->
                         <div>
-                            <h3 class="fw-bold mt-3" style="font-size: 24px;">Mission</h3>
-                            <p class="mb-0" style="font-size: 16px; line-height: 1.6;">
-                                Menjadi organisasi riset terkemuka dalam penelitian maupun pengembangan untuk
-                                mendorong inovasi teknologi serta keilmuan di bidang penyimpanan,
-                                pengolahan, dan rekayasa sistem data yang berkelanjutan
+                            <h3 class="fw-bold mb-2">Mission</h3>
+                            <p class="text-muted mb-0" style="line-height: 1.7;">
+                                <?= $misi ? htmlspecialchars($misi['isi_konten']) : 'Menjadi organisasi riset terkemuka dalam penelitian maupun pengembangan untuk mendorong inovasi teknologi serta keilmuan di bidang penyimpanan, pengolahan, dan rekayasa sistem data yang berkelanjutan' ?>
                             </p>
                         </div>
-
                     </div>
 
                 </div>
@@ -155,214 +151,180 @@
     </div>
 </section>
 
-<section id="focusRiset" style="background: #19586E;">
-    <div class="container py-5">
-        <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-4">
-            <h2 class="text-white" style="font-size: 16px;">About Us</h2>
-            <h2 class="text-white" style="font-size: 40px; font-weight: bold;">Focus Riset</h2>
+<section id="focusRiset" style="background: #19586E;" class="section-padding">
+    <div class="container text-center">
+        <div class="mb-5">
+            <p class="fw-bold text-uppercase text-white-50" style="letter-spacing: 1px;">Riset Kami</p>
+            <h2 class="fw-bold display-5 text-white">Fokus Riset</h2>
         </div>
 
         <div class="row justify-content-center g-4">
-
             <!-- Item -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
-                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
+            <?php for ($i = 0; $i < 5; $i++): ?>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card-modern h-100 d-flex align-items-center justify-content-center p-3"
+                        style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h3 class="fw-semibold text-white mb-0" style="font-size: 1.1rem;">Analisis Data</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
-                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
-                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
-                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="text-center text-white border border-white rounded-3 p-3" style="background: #D9D9D91A;">
-                    <h3 class="fw-semibold" style="font-size: 20px;">Analisis Data</h3>
-                </div>
-            </div>
+            <?php endfor; ?>
         </div>
     </div>
 </section>
 
-<section id="publication">
-    <div class="container py-5">
-        <div class="d-flex flex-column gap-2 mb-4">
-            <h2 style="color: #5F983C; font-size: 16px;">Publikasi</h2>
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="text-vision-gradient" style="font-size: 40px; font-weight: bold;">Publikasi
-                </h2>
-                <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
-                    style="animation-delay: .4s; background: #7ABC52; width: fit-content;">
-                    Selengkapnya
-                </button>
+<section id="publication" class="section-padding">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-5">
+            <div>
+                <p class="fw-bold text-uppercase" style="color: #7ABC52; letter-spacing: 1px;">Publikasi</p>
+                <h2 class="fw-bold display-5">Publikasi Terbaru</h2>
             </div>
-
-            <div class="row">
-                <div class="col-6 col-lg-3">
-                    <div class="card shadow rounded-3 p-3" style="min-height: 392px;">
-                        <p class="p-2 rounded-pill" style="background: #7ABC5233; color: #314755; font-size: 10px;">Most
-                            Citised</p>
-                        <div class="card-body">
-                            <h5 class="card-title fw-semibold lh-large" style="color: #314755; font-size: 18px;">Sistem
-                                Prediksi
-                                Penjualan Frozen Food dengan Metode Monte
-                                Carlo (Studi Kasus: Supermama Frozen Food)</h5>
-                            <p class="card-text" style="color: #575757BF; font-size: 12px;">2022</p>
-                        </div>
-                        <button class="btn border-2 p-3 fw-bold"
-                            style="border-color: #314755 !important; color: #314755;">Baca</button>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="card shadow rounded-3 p-3" style="min-height: 392px;">
-                        <p class="p-2 rounded-pill" style="background: #7ABC5233; color: #314755; font-size: 10px;">Most
-                            Citised</p>
-                        <div class="card-body">
-                            <h5 class="card-title fw-semibold lh-large" style="color: #314755; font-size: 18px;">Sistem
-                                Prediksi
-                                Penjualan Frozen Food dengan Metode Monte
-                                Carlo (Studi Kasus: Supermama Frozen Food)</h5>
-                            <p class="card-text" style="color: #575757BF; font-size: 12px;">2022</p>
-                        </div>
-                        <button class="btn border-2 p-3 fw-bold"
-                            style="border-color: #314755 !important; color: #314755;">Baca</button>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="card shadow rounded-3 p-3" style="min-height: 392px;">
-                        <p class="p-2 rounded-pill" style="background: #7ABC5233; color: #314755; font-size: 10px;">Most
-                            Citised</p>
-                        <div class="card-body">
-                            <h5 class="card-title fw-semibold lh-large" style="color: #314755; font-size: 18px;">Sistem
-                                Prediksi
-                                Penjualan Frozen Food dengan Metode Monte
-                                Carlo (Studi Kasus: Supermama Frozen Food)</h5>
-                            <p class="card-text" style="color: #575757BF; font-size: 12px;">2022</p>
-                        </div>
-                        <button class="btn border-2 p-3 fw-bold"
-                            style="border-color: #314755 !important; color: #314755;">Baca</button>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="card shadow rounded-3 p-3" style="min-height: 392px;">
-                        <p class="p-2 rounded-pill" style="background: #7ABC5233; color: #314755; font-size: 10px;">Most
-                            Citised</p>
-                        <div class="card-body">
-                            <h5 class="card-title fw-semibold lh-large" style="color: #314755; font-size: 18px;">Sistem
-                                Prediksi
-                                Penjualan Frozen Food dengan Metode Monte
-                                Carlo (Studi Kasus: Supermama Frozen Food)</h5>
-                            <p class="card-text" style="color: #575757BF; font-size: 12px;">2022</p>
-                        </div>
-                        <button class="btn border-2 p-3 fw-bold"
-                            style="border-color: #314755 !important; color: #314755;">Baca</button>
-                    </div>
-                </div>
-            </div>
+            <a href="/publications" class="btn btn-modern btn-primary-custom" style="text-decoration: none;">
+                Selengkapnya
+            </a>
         </div>
-    </div>
-</section>
 
-<section id="gallery" style="background: #E6E6E6;">
-    <div class="container py-5">
-        <div class="d-flex flex-column gap-2 mb-4">
-            <h2 style="color: #5F983C; font-size: 16px;">Tentang Kami</h2>
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="text-vision-gradient" style="font-size: 40px; font-weight: bold;">Galeri
-                </h2>
-                <button class="btn mt-2 px-4 py-2 fw-bold text-white animate-fade rounded-3"
-                    style="animation-delay: .4s; background: #7ABC52; width: fit-content;">
-                    Selengkapnya
-                </button>
-            </div>
-
-            <div class="row justify-content-center align-items-center g-4">
-                <div class="col-6 col-lg-4">
-                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
-                </div>
-                <div class="col-6 col-lg-4">
-                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
-                </div>
-                <div class="col-6 col-lg-4">
-                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
-                </div>
-                <div class="col-6 col-lg-4">
-                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
-                </div>
-                <div class="col-6 col-lg-4">
-                    <img src="/assets/images/dummy-image.png" alt="Gallery Image" class="img-fluid rounded-3">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contactUs">
-    <div class="container py-5">
         <div class="row g-4">
+            <?php if (empty($recentPublications)): ?>
+                <div class="col-12 text-center">
+                    <p class="text-muted">Belum ada publikasi.</p>
+                </div>
+            <?php else: ?>
+                <?php foreach ($recentPublications as $pub): ?>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card-modern h-100 d-flex flex-column">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <?php
+                                    // Calculate max citations from the most cited list (since it's sorted DESC, first one is max)
+                                    $maxCitations = 0;
+                                    if (!empty($mostCitedPublications)) {
+                                        $maxCitations = $mostCitedPublications[0]['citation_count'];
+                                    }
+
+                                    // Check if this publication has the max citations
+                                    $isMostCited = ($pub['citation_count'] > 0 && $pub['citation_count'] == $maxCitations);
+
+                                    if ($isMostCited):
+                                        ?>
+                                        <span class="badge rounded-pill"
+                                            style="background: #d1e7dd; color: #0f5132; font-size: 0.75rem;">
+                                            Most Cited
+                                        </span>
+                                    <?php else: ?>
+                                        <!-- Spacer to keep layout consistent if needed, or just empty -->
+                                        <div></div>
+                                    <?php endif; ?>
+                                </div>
+
+                                <h5 class="card-title fw-bold mb-3" style="color: #314755; line-height: 1.4;">
+                                    <?= htmlspecialchars($pub['judul_publikasi']) ?>
+                                </h5>
+
+                                <div class="mt-auto mb-4">
+                                    <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
+                                        <i class="bi bi-calendar3 me-2"></i><?= htmlspecialchars($pub['tahun_terbit']) ?>
+                                    </p>
+                                    <span class="badge rounded-pill bg-secondary bg-opacity-25 text-secondary">
+                                        <?= $pub['citation_count'] ?? 0 ?> Citations
+                                    </span>
+                                </div>
+
+                                <a href="<?= htmlspecialchars($pub['link_publikasi'] ?? '#') ?>" target="_blank"
+                                    class="btn btn-modern btn-outline-custom w-100 text-center"
+                                    style="border-color: #19586E; color: #19586E;">Baca Publikasi</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" style="background: #f8f9fa;" class="section-padding">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-5">
+            <div>
+                <p class="fw-bold text-uppercase" style="color: #7ABC52; letter-spacing: 1px;">Galeri</p>
+                <h2 class="fw-bold display-5">Dokumentasi Kegiatan</h2>
+            </div>
+            <a href="/gallery" class="btn btn-modern btn-primary-custom" style="text-decoration: none;">
+                Lihat Semua
+            </a>
+        </div>
+
+        <div class="row g-4">
+            <?php foreach ($gallery as $photo): ?>
+                <div class="col-6 col-lg-4">
+                    <div class="card-modern overflow-hidden p-0 gallery-item">
+                        <img src="<?= htmlspecialchars($photo['file_path']) ?>" alt="Gallery Image" class="img-fluid w-100"
+                            style="object-fit: cover; height: 250px; transition: transform 0.5s ease;">
+                        <div class="gallery-overlay">
+                            <p class="mb-0 fw-semibold"><?= htmlspecialchars($photo['deskripsi'] ?? '') ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<section id="contactUs" class="section-padding">
+    <div class="container">
+        <div class="row g-5">
             <div class="col-lg-5">
-                <h2 style="color: #5F983C; font-size: 16px;">Contact</h2>
-                <h2 class="text-vision-gradient" style="font-size: 40px; font-weight: bold;">Let's build something
-                    meaningful together
-                </h2>
-                <p class="all-text-gradient" style="font-size: 18px;">We welcome collaborations with fellow researchers,
-                    students, and industry partners. Reach out to learn how we can co-create impactful data solutions.
+                <p class="fw-bold text-uppercase" style="color: #7ABC52; letter-spacing: 1px;">Contact</p>
+                <h2 class="fw-bold display-5 mb-4">Let's build something meaningful together</h2>
+                <p class="text-muted mb-5" style="font-size: 1.1rem;">
+                    We welcome collaborations with fellow researchers, students, and industry partners. Reach out to
+                    learn how we can co-create impactful data solutions.
                 </p>
-                <div class="d-flex align-items-center gap-3 rounded all-text-gradient">
-                    <i class="bi bi-envelope d-flex justify-content-center align-items-center rounded-circle"
-                        style="background:#4288A133; width:50px; height:50px; font-size:22px;"></i>
-                    <div class="d-flex flex-column">
-                        <span class="fw-semibold">Email</span>
+
+                <div class="d-flex align-items-center gap-4 p-4 rounded-4"
+                    style="background: rgba(122, 188, 82, 0.05);">
+                    <div class="feature-icon-box mb-0 bg-white shadow-sm">
+                        <i class="bi bi-envelope"></i>
+                    </div>
+                    <div>
+                        <span class="d-block fw-bold text-dark">Email Us</span>
                         <span class="text-muted">datatechlab@college.edu</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
-                <div class="shadow p-4 bg-white border rounded-3">
+                <div class="card-modern p-5">
                     <form action="">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6">
-                                <div class="mb-2">
-                                    <label for="name" class="form-label fw-semibold" style="color: #314755;">Full
-                                        Name<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" aria-describedby="name" name="name"
-                                        id="myInput">
-                                </div>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label fw-bold">Full Name <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control p-3 bg-light border-0" name="name" id="name"
+                                    placeholder="John Doe">
                             </div>
-                            <div class="col-md-6 col-lg-6">
-                                <div class="mb-2">
-                                    <label for="email" class="form-label fw-semibold" style="color: #314755;">Email
-                                        Address<span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" aria-describedby="email" name="email"
-                                        id="myInput">
-                                </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label fw-bold">Email Address <span
+                                        class="text-danger">*</span></label>
+                                <input type="email" class="form-control p-3 bg-light border-0" name="email" id="email"
+                                    placeholder="john@example.com">
+                            </div>
+                            <div class="col-12">
+                                <label for="organization" class="form-label fw-bold">Organization <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control p-3 bg-light border-0" name="organization"
+                                    id="organization" placeholder="University / Company">
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label fw-bold">How Can we Help?</label>
+                                <textarea class="form-control p-3 bg-light border-0" name="message" id="message"
+                                    rows="5" placeholder="Tell us about your project..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-modern btn-primary-custom w-100 py-3">
+                                    Send Message
+                                </button>
                             </div>
                         </div>
-                        <div class="mt-3">
-                            <label for="organization" class="form-label fw-semibold"
-                                style="color: #314755;">Organization<span class="text-danger">*</span></label>
-                            <input type="organization" class="form-control" aria-describedby="organization"
-                                name="organization" id="myInput">
-                        </div>
-                        <div class="mt-3">
-                            <label for="message" class="form-label fw-semibold" style="color: #314755;">How Can we
-                                Help?</label>
-                            <textarea class="form-control" name="message" id="message" rows="5"></textarea>
-                        </div>
-                        <button type="submit" class="btn mt-4 w-100 py-2 fw-bold text-white rounded-3"
-                            style="background: #7ABC52;">
-                            Submit
-                        </button>
                     </form>
                 </div>
             </div>

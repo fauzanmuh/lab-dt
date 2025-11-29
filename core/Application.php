@@ -2,8 +2,7 @@
 
 namespace Core;
 
-use Core\Http\Request;
-use Core\Http\Response;
+
 use Core\Database\Database;
 
 /**
@@ -67,6 +66,11 @@ class Application
 
         // Set timezone
         date_default_timezone_set($this->config['timezone'] ?? 'UTC');
+
+        // Start session
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 
     /**
@@ -92,34 +96,38 @@ class Application
     /**
      * Handle incoming request
      */
-    public function handle(Request $request): Response
+    /**
+     * Handle incoming request
+     */
+    public function handle(): void
     {
         try {
-            return $this->router->dispatch($request);
+            $this->router->dispatch();
         } catch (\Throwable $e) {
-            return $this->handleException($e);
+            $this->handleException($e);
         }
     }
 
     /**
      * Handle exceptions
      */
-    protected function handleException(\Throwable $e): Response
+    protected function handleException(\Throwable $e): void
     {
         $debug = $this->config['debug'] ?? false;
 
+        http_response_code(500);
+
         if ($debug) {
-            $content = sprintf(
+            echo sprintf(
                 "<h1>Error: %s</h1><pre>%s</pre><pre>%s</pre>",
                 $e->getMessage(),
                 $e->getTraceAsString(),
                 'File: ' . $e->getFile() . ' Line: ' . $e->getLine()
             );
-
-            return new Response($content, 500);
+        } else {
+            echo 'Internal Server Error';
         }
-
-        return new Response('Internal Server Error', 500);
+        exit;
     }
 
     /**
@@ -127,9 +135,7 @@ class Application
      */
     public function run(): void
     {
-        $request = Request::capture();
-        $response = $this->handle($request);
-        $response->send();
+        $this->handle();
     }
 
     /**

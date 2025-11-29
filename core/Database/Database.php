@@ -44,7 +44,11 @@ class Database
         $password = $this->config['password'] ?? '';
         $charset = $this->config['charset'] ?? 'utf8';
 
-        $dsn = "{$driver}:host={$host};port={$port};dbname={$database};charset={$charset}";
+        $dsn = "{$driver}:host={$host};port={$port};dbname={$database}";
+
+        if ($driver !== 'pgsql') {
+            $dsn .= ";charset={$charset}";
+        }
 
         try {
             $this->connection = new PDO($dsn, $username, $password, [

@@ -2,8 +2,7 @@
 
 namespace Core;
 
-use Core\Http\Request;
-use Core\Http\Response;
+
 use Exception;
 
 /**
@@ -148,41 +147,49 @@ class Router
     /**
      * Dispatch the request to a matching route
      */
-    public function dispatch(Request $request): Response
+    public function dispatch(): void
     {
-        $method = $request->method();
-        $uri = $request->path();
+        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+        $uri = $_SERVER['REQUEST_URI'] ?? '/';
+
+        // Remove query string
+        if (($pos = strpos($uri, '?')) !== false) {
+            $uri = substr($uri, 0, $pos);
+        }
 
         // Find matching route
         $route = $this->findRoute($method, $uri);
 
         if ($route === null) {
-            return new Response('404 Not Found', 404);
+            http_response_code(404);
+            echo "404 Not Found";
+            return;
         }
 
         // Extract route parameters
         $parameters = $this->extractParameters($route->uri(), $uri);
-        $request->setRouteParameters($parameters);
 
-        // Execute middleware (simple loop, no pipeline abstraction)
+        // Execute middleware
         $middlewares = $route->getMiddleware();
 
         foreach ($middlewares as $middlewareClass) {
             $middleware = new $middlewareClass();
 
-            // Check if middleware returns early (e.g., auth failed)
-            $result = $middleware->handle($request, function ($request) {
-                return $request; // Continue to next middleware
+            // Check if middleware returns early
+            $result = $middleware->handle(null, function ($request) {
+                return $request;
             });
 
-            // If middleware returns a Response, stop and return it
-            if ($result instanceof Response) {
-                return $result;
-            }
+            // If middleware returns something (not null/true/false but a response-like thing or just exits), usually it exits or redirects.
+            // But if it returns a value, we might want to stop?
+            // In the previous code: if ($result instanceof Response) return $result;
+            // Now middleware handles redirection/exit itself.
+            // So we can probably ignore return value unless we want to support some convention.
+            // But let's assume middleware exits if it fails (like AuthMiddleware).
         }
 
         // Run the actual route action
-        return $this->runRoute($route, $request, $parameters);
+        $this->runRoute($route, $parameters);
     }
 
     /**
@@ -233,35 +240,22 @@ class Router
         return array_combine($paramNames, $matches) ?: [];
     }
 
-    /**
-     * Run the route action
-     */
-    protected function runRoute(Route $route, Request $request, array $parameters): Response
+    protected function runRoute(Route $route, array $parameters): void
     {
         $action = $route->action();
 
-        // If action is a closure
         if ($action instanceof \Closure) {
-            $result = call_user_func_array($action, array_merge([$request], array_values($parameters)));
-        }
-        // If action is a controller@method string
-        elseif (is_string($action)) {
-            $result = $this->callControllerAction($action, $request, $parameters);
-        }
-        // If action is an array [Controller::class, 'method']
-        elseif (is_array($action)) {
-            $result = $this->callControllerAction($action, $request, $parameters);
+            echo call_user_func_array($action, array_values($parameters));
+        } elseif (is_string($action)) {
+            $this->callControllerAction($action, $parameters);
+        } elseif (is_array($action)) {
+            $this->callControllerAction($action, $parameters);
         } else {
             throw new Exception('Invalid route action');
         }
-
-        return $this->prepareResponse($result);
     }
 
-    /**
-     * Call a controller action
-     */
-    protected function callControllerAction($action, Request $request, array $parameters): mixed
+    protected function callControllerAction($action, array $parameters): void
     {
         if (is_string($action)) {
             [$controller, $method] = explode('@', $action);
@@ -269,23 +263,19 @@ class Router
             [$controller, $method] = $action;
         }
 
-        // Create controller instance
         $instance = new $controller();
 
-        // Call the method with request and parameters
-        return call_user_func_array([$instance, $method], array_merge([$request], array_values($parameters)));
+        $response = call_user_func_array([$instance, $method], array_values($parameters));
+
+        if (is_string($response)) {
+            echo $response;
+        }
     }
 
-    /**
-     * Prepare the response
-     */
-    protected function prepareResponse($result): Response
+    protected function prepareResponse($result)
     {
-        if ($result instanceof Response) {
-            return $result;
-        }
-
-        return new Response((string) $result, 200);
+        // Deprecated
+        return $result;
     }
 
     /**

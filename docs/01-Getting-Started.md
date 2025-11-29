@@ -59,11 +59,11 @@ your-project/
 │   └── Views/             # HTML templates
 │
 ├── core/                  # FRAMEWORK CODE (you rarely edit this)
-│   ├── Http/              # Request and Response handling
 │   ├── Database/          # Database connection
 │   ├── Middleware/        # Security and filters
 │   ├── Application.php    # Main app class
 │   ├── Router.php         # URL routing
+│   ├── Controller.php     # Base controller
 │   └── helpers.php        # Utility functions
 │
 ├── config/                # CONFIGURATION
@@ -134,7 +134,7 @@ $router->get('/about', [HomeController::class, 'about']);
 **File: `app/Controllers/HomeController.php`**
 
 ```php
-public function about(Request $request): Response
+public function about()
 {
     return $this->view('about', [
         'title' => 'About Us'
@@ -145,7 +145,7 @@ public function about(Request $request): Response
 **What happens:**
 
 1. `about()` method is called
-2. Creates a Response with the 'about' view
+2. Creates a view with the 'about' template
 3. Passes data: `['title' => 'About Us']`
 
 ### Step 5: View Renders
@@ -172,7 +172,7 @@ public function about(Request $request): Response
 ### Step 6: Response Sent
 
 ```
-HTML created → Response object → Sent to browser → User sees page
+HTML created → Sent to browser → User sees page
 ```
 
 ## Your First Feature
@@ -192,7 +192,7 @@ $router->get('/hello', [HomeController::class, 'hello']);
 **File: `app/Controllers/HomeController.php`**
 
 ```php
-public function hello(Request $request): Response
+public function hello()
 {
     return $this->view('hello', [
         'title' => 'Hello Page',
@@ -261,32 +261,19 @@ In the view, you can use:
 
 **Why?** Prevents XSS attacks (security)
 
-### 3. Method Return Types
+### 3. Handling Requests
+
+We use native PHP superglobals:
 
 ```php
-public function about(Request $request): Response
-//                                        ^^^^^^^^
-//                                        Must return Response object
-```
-
-Always return a `Response` object from controller methods!
-
-### 4. Request Object
-
-The `Request` object contains everything about the user's request:
-
-```php
-public function contact(Request $request): Response
+public function contact()
 {
     // Get submitted data
-    $name = $request->input('name');
-    $email = $request->input('email');
+    $name = $_POST['name'] ?? '';
+    $email = $_POST['email'] ?? '';
 
     // Get HTTP method
-    $method = $request->method(); // 'GET', 'POST', etc.
-
-    // Get URL path
-    $path = $request->path(); // '/contact'
+    $method = $_SERVER['REQUEST_METHOD']; // 'GET', 'POST', etc.
 }
 ```
 
@@ -306,17 +293,17 @@ return $this->view('page-name', [
 
 ```php
 // Controller
-return $this->redirect('/dashboard');
+$this->redirect('/dashboard');
 ```
 
 ### Get Form Data
 
 ```php
 // Controller
-public function submit(Request $request): Response
+public function submit()
 {
-    $name = $request->input('name');
-    $email = $request->input('email');
+    $name = $_POST['name'] ?? '';
+    $email = $_POST['email'] ?? '';
 
     // Process the data...
 }
@@ -326,7 +313,7 @@ public function submit(Request $request): Response
 
 ```php
 // Controller
-public function users(Request $request): Response
+public function users()
 {
     // Load the model
     $userModel = $this->loadModel(User::class);
@@ -399,11 +386,6 @@ Now that you understand the basics, learn about:
 $this->view('view-name', $data)
 $this->redirect('/url')
 $this->loadModel(ModelClass::class)
-
-// In Request:
-$request->input('field-name')
-$request->method()
-$request->path()
 
 // In View:
 htmlspecialchars($variable)

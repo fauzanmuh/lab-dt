@@ -34,7 +34,7 @@ This document uses diagrams and visuals to help you understand the framework str
 ┌─────────────────────────────────────────────────────────────────┐
 │                       FRAMEWORK CORE                             │
 │                                                                  │
-│  Router │ Request │ Response │ Database │ Middleware │ Helpers  │
+│  Router │ Database │ Middleware │ Helpers │ Controller │ App    │
 │                                                                  │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -66,10 +66,6 @@ your-project/
 │       └── about.php                   ← About page view
 │
 ├── 📁 core/                            ← FRAMEWORK CODE
-│   │
-│   ├── 📁 Http/                        ← HTTP handling
-│   │   ├── Request.php                 ← Input wrapper
-│   │   └── Response.php                ← Output wrapper
 │   │
 │   ├── 📁 Database/                    ← Database layer
 │   │   └── Database.php                ← PDO wrapper
@@ -121,39 +117,33 @@ your-project/
        ├─▶ Routes file
        └─▶ Runs app
 
-4. REQUEST OBJECT CREATED
-   └─▶ Wraps $_GET, $_POST, $_SERVER
-       └─▶ Clean API to access data
-
-5. ROUTER MATCHES URL
-   └─▶ Looks at URL: /about
+4. ROUTER MATCHES URL
+   └─▶ Looks at $_SERVER['REQUEST_URI']: /about
        └─▶ Finds: GET /about → HomeController::about
 
-6. MIDDLEWARE (Optional)
+5. MIDDLEWARE (Optional)
    └─▶ Checks:
        ├─▶ Is user logged in? (Auth)
        ├─▶ Valid CSRF token? (Security)
        └─▶ Custom checks?
 
-7. CONTROLLER CALLED
-   └─▶ HomeController::about($request)
+6. CONTROLLER CALLED
+   └─▶ HomeController::about()
        ├─▶ May load Model
        ├─▶ Process logic
-       └─▶ Returns Response
+       └─▶ Returns View
 
-8. VIEW RENDERED
+7. VIEW RENDERED
    └─▶ Finds: app/Views/about.php
        ├─▶ Extracts data to variables
        ├─▶ Buffers output
        ├─▶ Includes view file
        └─▶ Returns HTML string
 
-9. RESPONSE SENT
-   └─▶ Sets HTTP status (200 OK)
-       ├─▶ Sets headers
-       └─▶ Sends HTML content
+8. RESPONSE SENT
+   └─▶ Sends HTML content to browser
 
-10. BROWSER DISPLAYS
+9. BROWSER DISPLAYS
     └─▶ User sees the page!
 ```
 
@@ -183,15 +173,17 @@ Problems:
 ┌──────────────────┐
 │     MODEL        │  ← Database & Business Logic
 │  (User.php)      │     • getAllUsers()
-└────────┬─────────┘     • getUserById($id)
-         │                • createUser($data)
+│                  │     • getUserById($id)
+└────────┬─────────┘     • createUser($data)
+         │
          │ provides data
          ▼
 ┌──────────────────┐
 │   CONTROLLER     │  ← Request Handler
 │ (UserController) │     • Receives request
-└────────┬─────────┘     • Asks Model for data
-         │                • Chooses View
+│                  │     • Asks Model for data
+└────────┬─────────┘     • Chooses View
+         │
          │ passes data
          ▼
 ┌──────────────────┐
@@ -226,7 +218,7 @@ Benefits:
        ▼
 ┌─────────────┐
 │ Controller  │ ─────── app/Controllers/UserController.php
-│   (Thin)    │ public function index(Request $request): Response
+│   (Thin)    │ public function index()
 └──────┬──────┘
        │
        │ 3. Load Model
@@ -266,7 +258,7 @@ Benefits:
        │ 8. HTML Generated
        ▼
 ┌─────────────┐
-│  Response   │ HTML wrapped in Response object
+│  Response   │ HTML sent to browser
 └──────┬──────┘
        │
        │ 9. HTTP Response
@@ -385,30 +377,17 @@ $this->view('users/index', ['users' => $usersArray])
       │
       ▼
 ┌─────────────────────────────────────────────┐
-│  Response::view()                           │
-│  1. Calls renderView()                      │
-└──────────────┬──────────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────────┐
-│  renderView()                               │
-│  1. Find file: app/Views/users/index.php   │
-│  2. Extract data: $users = $usersArray     │
-│  3. ob_start() ← Start buffer              │
-│  4. include 'users/index.php'              │
-│  5. ob_get_clean() ← Get HTML              │
+│  Controller::view()                         │
+│  1. Extracts data                           │
+│  2. Starts buffer                           │
+│  3. Includes view file                      │
+│  4. Returns HTML                            │
 └──────────────┬──────────────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────────────┐
 │  Returns HTML as string                     │
 │  "<h1>Users</h1><ul><li>John</li>..."      │
-└──────────────┬──────────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────────┐
-│  new Response($html, 200)                   │
-│  Response object created                    │
 └──────────────┬──────────────────────────────┘
                │
                ▼

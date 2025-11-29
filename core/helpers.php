@@ -5,7 +5,7 @@
  * Global helper functions for convenience
  */
 
-use Core\Http\Response;
+
 use Core\Middleware\CsrfMiddleware;
 
 if (!function_exists('dd')) {
@@ -82,21 +82,55 @@ if (!function_exists('config')) {
 
 if (!function_exists('view')) {
     /**
-     * Create a view response
+     * Render a view
      */
-    function view(string $view, array $data = []): Response
+    function view(string $view, array $data = []): string
     {
-        return Response::view($view, $data);
+        extract($data);
+
+        $viewPath = BASE_PATH . '/app/Views/' . str_replace('.', '/', $view) . '.php';
+
+        if (!file_exists($viewPath)) {
+            throw new \Exception("View [{$view}] not found.");
+        }
+
+        ob_start();
+        include $viewPath;
+        $content = ob_get_clean();
+
+        // Check if a specific layout is requested
+        $layoutName = $data['layout'] ?? 'layouts/main';
+
+        // Allow disabling layout by passing false or null
+        if ($layoutName === false || $layoutName === null) {
+            return $content;
+        }
+
+        $layoutPath = BASE_PATH . '/app/Views/' . $layoutName . '.php';
+
+        if (!file_exists($layoutPath)) {
+            // Fallback to checking if it's just the name without directory
+            $layoutPath = BASE_PATH . '/app/Views/layouts/' . $layoutName . '.php';
+
+            if (!file_exists($layoutPath)) {
+                throw new \Exception("Layout [{$layoutName}] not found.");
+            }
+        }
+
+        ob_start();
+        include $layoutPath;
+        return ob_get_clean();
     }
 }
 
 if (!function_exists('redirect')) {
     /**
-     * Create a redirect response
+     * Redirect to a URL
      */
-    function redirect(string $url, int $statusCode = 302): Response
+    function redirect(string $url, int $statusCode = 302): void
     {
-        return Response::redirect($url, $statusCode);
+        header("Location: " . $url, true, $statusCode);
+        exit;
     }
 }
 

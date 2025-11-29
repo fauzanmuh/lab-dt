@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use Core\Http\Response;
+
 use Core\Database\Database;
 
 /**
@@ -35,24 +35,66 @@ abstract class Controller
     /**
      * Render a view with data
      */
-    protected function view(string $view, array $data = []): Response
+    /**
+     * Render a view with data
+     */
+    protected function view(string $view, array $data = []): string
     {
-        return Response::view($view, $data);
+        extract($data);
+
+        $viewPath = __DIR__ . '/../app/Views/' . str_replace('.', '/', $view) . '.php';
+
+        if (!file_exists($viewPath)) {
+            throw new \Exception("View [{$view}] not found.");
+        }
+
+        ob_start();
+        include $viewPath;
+        $content = ob_get_clean();
+
+        // Check if a specific layout is requested
+        $layoutName = $data['layout'] ?? 'layouts/main';
+
+        // Allow disabling layout by passing false or null
+        if ($layoutName === false || $layoutName === null) {
+            return $content;
+        }
+
+        $layoutPath = __DIR__ . '/../app/Views/' . $layoutName . '.php';
+
+        if (!file_exists($layoutPath)) {
+            // Fallback to checking if it's just the name without directory
+            $layoutPath = __DIR__ . '/../app/Views/layouts/' . $layoutName . '.php';
+
+            if (!file_exists($layoutPath)) {
+                throw new \Exception("Layout [{$layoutName}] not found.");
+            }
+        }
+
+        ob_start();
+        include $layoutPath;
+        return ob_get_clean();
     }
 
     /**
      * Redirect to a URL
      */
-    protected function redirect(string $url, int $statusCode = 302): Response
+    protected function redirect(string $url, int $statusCode = 302): void
     {
-        return Response::redirect($url, $statusCode);
+        header("Location: " . $url, true, $statusCode);
+        exit;
     }
 
     /**
      * Return a response
      */
-    protected function response(string $content, int $statusCode = 200, array $headers = []): Response
+    protected function response(string $content, int $statusCode = 200, array $headers = []): void
     {
-        return new Response($content, $statusCode, $headers);
+        http_response_code($statusCode);
+        foreach ($headers as $key => $value) {
+            header("$key: $value");
+        }
+        echo $content;
+        exit;
     }
 }

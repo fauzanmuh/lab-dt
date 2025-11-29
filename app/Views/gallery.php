@@ -19,56 +19,32 @@
         </ul>
 
         <div class="row justify-content-center align-items-center g-4 mt-2">
-            <div class="col-6 col-lg-4">
-                <img src="/assets/images/dummy-image.png" alt="Gallery Image"
-                    class="img-fluid rounded-3 border gallery-img" style="width: 344px; height: auto; cursor: pointer;"
-                    data-bs-toggle="modal" data-bs-target="#imageModal" data-image="/assets/images/dummy-image.png">
-            </div>
-            <div class="col-6 col-lg-4">
-                <img src="/assets/images/dummy-image.png" alt="Gallery Image"
-                    class="img-fluid rounded-3 border gallery-img" style="width: 344px; height: auto; cursor: pointer;"
-                    data-bs-toggle="modal" data-bs-target="#imageModal" data-image="/assets/images/dummy-image.png">
-            </div>
-            <div class="col-6 col-lg-4">
-                <img src="/assets/images/dummy-image.png" alt="Gallery Image"
-                    class="img-fluid rounded-3 border gallery-img" style="width: 344px; height: auto; cursor: pointer;"
-                    data-bs-toggle="modal" data-bs-target="#imageModal" data-image="/assets/images/dummy-image.png">
-            </div>
-            <div class="col-6 col-lg-4">
-                <img src="/assets/images/dummy-image.png" alt="Gallery Image"
-                    class="img-fluid rounded-3 border gallery-img" style="width: 344px; height: auto; cursor: pointer;"
-                    data-bs-toggle="modal" data-bs-target="#imageModal" data-image="/assets/images/dummy-image.png">
-            </div>
-            <div class="col-6 col-lg-4">
-                <img src="/assets/images/dummy-image.png" alt="Gallery Image"
-                    class="img-fluid rounded-3 border gallery-img" style="width: 344px; height: auto; cursor: pointer;"
-                    data-bs-toggle="modal" data-bs-target="#imageModal" data-image="/assets/images/dummy-image.png">
-            </div>
-            <div class="col-6 col-lg-4">
-                <img src="/assets/images/dummy-image.png" alt="Gallery Image"
-                    class="img-fluid rounded-3 border gallery-img" style="width: 344px; height: auto; cursor: pointer;"
-                    data-bs-toggle="modal" data-bs-target="#imageModal" data-image="/assets/images/dummy-image.png">
-            </div>
+            <?php if (empty($photos)): ?>
+                <div class="col-12 text-center">
+                    <p class="text-muted">Belum ada foto di galeri.</p>
+                </div>
+            <?php else: ?>
+                <?php foreach ($photos as $photo): ?>
+                    <div class="col-6 col-lg-4">
+                        <div class="card-modern overflow-hidden p-0 gallery-item" style="height: 250px; cursor: pointer;"
+                            data-bs-toggle="modal" data-bs-target="#imageModal"
+                            data-image="/<?= htmlspecialchars($photo['file_path']) ?>">
+                            <img src="/<?= htmlspecialchars($photo['file_path']) ?>"
+                                alt="<?= htmlspecialchars($photo['deskripsi']) ?>" class="img-fluid w-100 h-100"
+                                style="object-fit: cover; transition: transform 0.5s ease;">
+                            <div class="gallery-overlay">
+                                <p class="mb-0 fw-semibold"><?= htmlspecialchars($photo['deskripsi'] ?? '') ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
 
         <!-- Pagination -->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center align-items-center mx-auto mt-4 p-2 rounded-3 custom-pagination"
-                style="width: fit-content; background-color: #F0F0F0;">
-                <li class="page-item">
-                    <a class="page-link arrow" href="#"><i class="bi bi-chevron-left"></i></a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">....</a></li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item">
-                    <a class="page-link arrow" href="#"><i class="bi bi-chevron-right"></i></a>
-                </li>
-            </ul>
-        </nav>
+        <div class="mt-4">
+            <?= $pagination->renderPublic($baseUrl) ?>
+        </div>
 
     </div>
 </section>
@@ -81,3 +57,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var imageModal = document.getElementById('imageModal');
+        imageModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var imageUrl = button.getAttribute('data-image');
+            var modalImage = imageModal.querySelector('#modalImage');
+            modalImage.src = imageUrl;
+        });
+    });
+</script>

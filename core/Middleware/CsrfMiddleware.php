@@ -2,8 +2,7 @@
 
 namespace Core\Middleware;
 
-use Core\Http\Request;
-use Core\Http\Response;
+
 use Closure;
 
 /**
@@ -19,35 +18,38 @@ class CsrfMiddleware implements MiddlewareInterface
         $this->exceptRoutes = $exceptRoutes;
     }
 
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
         // Skip for GET, HEAD, OPTIONS requests
-        if (in_array($request->method(), ['GET', 'HEAD', 'OPTIONS'])) {
+        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+        if (in_array($method, ['GET', 'HEAD', 'OPTIONS'])) {
             return $next($request);
         }
 
         // Skip for excepted routes
-        if ($this->shouldSkip($request)) {
+        if ($this->shouldSkip()) {
             return $next($request);
         }
 
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
-        $token = $request->input('_token') ?? $request->header('X-CSRF-Token');
+        $token = $_POST['_token'] ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
 
         if (!$token || !$this->validateToken($token)) {
-            return new Response(
-                'CSRF token mismatch. Your session has expired. Please refresh and try again.',
-                419
-            );
+            http_response_code(419);
+            echo 'CSRF token mismatch. Your session has expired. Please refresh and try again.';
+            exit;
         }
 
         return $next($request);
     }
 
-    protected function shouldSkip(Request $request): bool
+    protected function shouldSkip(): bool
     {
-        $path = $request->path();
+        $uri = $_SERVER['REQUEST_URI'] ?? '/';
+        $path = parse_url($uri, PHP_URL_PATH);
 
         foreach ($this->exceptRoutes as $route) {
             if ($path === $route || preg_match('#^' . $route . '$#', $path)) {

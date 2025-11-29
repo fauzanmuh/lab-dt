@@ -240,7 +240,7 @@
         </div>
 
         <h2 class="fw-bold mt-4" style="color: #575757; font-size: 32px;">Perkuliahan Terkait</h2>
-        <div class="row g-4 mb-5">
+        <div class="row g-4 mb-5 fade-in-up">
             <div class="col-12 col-md-6 col-xl-4">
                 <div class="card shadow rounded-3 p-3 animation-card">
                     <div class="text-center">
@@ -328,4 +328,3 @@
         </div>
 
     </div>
-</section>
