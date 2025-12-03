@@ -40,8 +40,13 @@
                             <tr>
                                 <td class="ps-4">
                                     <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar">
-                                            <?= strtoupper(substr($member['nama_lengkap'], 0, 1)) ?>
+                                        <div class="avatar overflow-hidden">
+                                            <?php if (!empty($member['foto_profil'])): ?>
+                                                <img src="/uploads/foto_profil/<?= htmlspecialchars($member['foto_profil']) ?>"
+                                                    alt="Profile" class="w-100 h-100 object-fit-cover">
+                                            <?php else: ?>
+                                                <?= strtoupper(substr($member['nama_lengkap'], 0, 1)) ?>
+                                            <?php endif; ?>
                                         </div>
                                         <div class="d-flex flex-column">
                                             <span
@@ -103,7 +108,7 @@
                 <h5 class="modal-title fw-bold">Tambah Anggota Baru</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/admin/members" method="POST">
+            <form action="/admin/members" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
@@ -112,6 +117,15 @@
                                     class="bi bi-person text-muted"></i></span>
                             <input type="text" class="form-control border-start-0 ps-0" id="nama_lengkap"
                                 name="nama_lengkap" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto_profil" class="form-label">Foto Profil</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-image text-muted"></i></span>
+                            <input type="file" class="form-control border-start-0 ps-0" id="foto_profil"
+                                name="foto_profil" accept="image/*">
                         </div>
                     </div>
                     <div class="mb-3">
@@ -165,7 +179,7 @@
                 <h5 class="modal-title fw-bold">Edit Member</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="editMemberForm" action="" method="POST">
+            <form id="editMemberForm" action="" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="edit_nama_lengkap" class="form-label">Nama Lengkap</label>
@@ -174,6 +188,16 @@
                                     class="bi bi-person text-muted"></i></span>
                             <input type="text" class="form-control border-start-0 ps-0" id="edit_nama_lengkap"
                                 name="nama_lengkap" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_foto_profil" class="form-label">Foto Profil (Biarkan kosong jika tidak ingin
+                            mengubah)</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-image text-muted"></i></span>
+                            <input type="file" class="form-control border-start-0 ps-0" id="edit_foto_profil"
+                                name="foto_profil" accept="image/*">
                         </div>
                     </div>
                     <div class="mb-3">

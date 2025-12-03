@@ -22,6 +22,7 @@ SELECT
 CREATE OR REPLACE VIEW view_recent_activity AS
 SELECT
     a.nama_lengkap AS user_name,
+    a.foto_profil,
     'Posted News' AS action,
     'News' AS module,
     b.judul AS title,
@@ -34,6 +35,7 @@ UNION ALL
 
 SELECT
     a.nama_lengkap AS user_name,
+    a.foto_profil,
     'Uploaded Photo' AS action,
     'Gallery' AS module,
     SUBSTRING(g.deskripsi, 1, 50) AS title,
@@ -46,6 +48,7 @@ UNION ALL
 
 SELECT
     a.nama_lengkap AS user_name,
+    a.foto_profil,
     'Added Publication' AS action,
     'Publications' AS module,
     p.judul_publikasi AS title,

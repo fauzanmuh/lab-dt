@@ -103,9 +103,17 @@
                                     <tr>
                                         <td class="ps-4">
                                             <div class="d-flex align-items-center gap-3">
-                                                <div class="avatar bg-light text-primary rounded-circle d-flex align-items-center justify-content-center"
+                                                <div class="avatar overflow-hidden rounded-circle d-flex align-items-center justify-content-center"
                                                     style="width: 32px; height: 32px;">
-                                                    <?= strtoupper(substr($activity['user_name'], 0, 2)) ?>
+                                                    <?php if (!empty($activity['foto_profil'])): ?>
+                                                        <img src="/uploads/foto_profil/<?= htmlspecialchars($activity['foto_profil']) ?>"
+                                                            alt="Profile" class="w-100 h-100 object-fit-cover">
+                                                    <?php else: ?>
+                                                        <div
+                                                            class="bg-light text-primary w-100 h-100 d-flex align-items-center justify-content-center">
+                                                            <?= strtoupper(substr($activity['user_name'], 0, 2)) ?>
+                                                        </div>
+                                                    <?php endif; ?>
                                                 </div>
                                                 <span
                                                     class="fw-bold text-dark"><?= htmlspecialchars($activity['user_name']) ?></span>

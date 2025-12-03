@@ -47,13 +47,13 @@
         }
 
         .form-control:focus {
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+            border-color: #7ABA54;
+            box-shadow: 0 0 0 4px rgba(122, 186, 84, 0.1);
         }
 
         .btn-primary {
-            background-color: #4f46e5;
-            border-color: #4f46e5;
+            background-color: #7ABA54;
+            border-color: #7ABA54;
             border-radius: 8px;
             padding: 0.75rem 1rem;
             font-weight: 500;
@@ -61,8 +61,8 @@
         }
 
         .btn-primary:hover {
-            background-color: #4338ca;
-            border-color: #4338ca;
+            background-color: #69a249;
+            border-color: #69a249;
         }
     </style>
 </head>

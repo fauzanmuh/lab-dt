@@ -24,8 +24,18 @@ class VisiMisiController extends Controller
     {
         $data = $_POST;
 
-        $this->visiMisiModel->upsertVisiMisi($data['jenis_konten'], $data['isi_konten']);
+        // Tambahkan pengecekan data untuk menghindari Notice PHP
+        if (isset($data['jenis_konten']) && isset($data['isi_konten'])) {
+            // Model sekarang menerima data yang benar
+            $this->visiMisiModel->upsertVisiMisi($data['jenis_konten'], $data['isi_konten']);
+            // Redirect kembali ke halaman manajemen (konsisten dengan controller lain)
+            $this->redirect('/admin/visimisi');
+            return;
+        }
+
+        // Opsional: respons error jika data tidak lengkap
         $this->redirect('/admin/visimisi');
+        return;
     }
 
     public function update($id)

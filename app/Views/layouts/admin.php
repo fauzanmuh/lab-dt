@@ -15,15 +15,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- summernote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <style>
         :root {
             --sidebar-width: 280px;
-            --primary-color: #6366f1;
-            --primary-hover: #4f46e5;
+            --primary-color: #7ABA54;
+            --primary-hover: #659e45;
             --sidebar-bg: #ffffff;
             --sidebar-color: #64748b;
-            --sidebar-active-bg: #eff6ff;
-            --sidebar-active-color: #6366f1;
+            --sidebar-active-bg: #f0fdf4;
+            --sidebar-active-color: #7ABA54;
             --body-bg: #f8fafc;
             --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
             --modal-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -112,8 +115,8 @@
             margin-bottom: 2rem;
             border-radius: 1rem;
             box-shadow: var(--card-shadow);
-            position: sticky;
-            top: 1rem;
+            /* position: sticky; */
+            /* top: 1rem; */
             z-index: 900;
         }
 
@@ -126,14 +129,14 @@
         .avatar {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            background: linear-gradient(135deg, #7ABA54 0%, #659e45 100%);
             color: white;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(122, 186, 84, 0.3);
         }
 
         /* Card Styling */
@@ -199,7 +202,7 @@
 
         .form-control:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(122, 186, 84, 0.1);
         }
 
         .form-label {
@@ -246,14 +249,14 @@
         .btn-primary {
             background: var(--primary-color);
             border-color: var(--primary-color);
-            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(122, 186, 84, 0.3);
         }
 
         .btn-primary:hover {
             background: var(--primary-hover);
             border-color: var(--primary-hover);
             transform: translateY(-1px);
-            box-shadow: 0 6px 8px -1px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 6px 8px -1px rgba(122, 186, 84, 0.4);
         }
 
         @media (max-width: 768px) {
@@ -269,6 +272,52 @@
             .sidebar.show {
                 transform: translateX(0);
             }
+        }
+
+        /* Pagination Overrides */
+        .page-link {
+            color: var(--primary-color);
+            border: none;
+            margin: 0 4px;
+            border-radius: 8px;
+            min-width: 40px;
+            height: 40px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .page-link:hover {
+            color: var(--primary-hover);
+            background-color: #e2e6ea;
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .page-link:focus {
+            box-shadow: 0 0 0 0.25rem rgba(122, 186, 84, 0.25);
+        }
+
+        /* Global Color Overrides */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+
+        .border-primary {
+            border-color: var(--primary-color) !important;
+        }
+
+        .btn-primary:disabled,
+        .btn-primary.disabled {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            opacity: 0.65;
         }
     </style>
 </head>

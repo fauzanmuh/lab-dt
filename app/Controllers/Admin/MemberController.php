@@ -66,7 +66,21 @@ class MemberController extends Controller
             unset($data['status_aktif']);
         }
 
-        // Handle file upload for update if needed (similar to store)
+        // Handle file upload for update
+        if (isset($_FILES['foto_profil']) && $_FILES['foto_profil']['error'] === UPLOAD_ERR_OK) {
+            $tmp_name = $_FILES['foto_profil']['tmp_name'];
+            $name = basename($_FILES['foto_profil']['name']);
+            $destination = __DIR__ . '/../../../public/uploads/foto_profil/' . $name;
+
+            // Ensure directory exists
+            if (!is_dir(dirname($destination))) {
+                mkdir(dirname($destination), 0755, true);
+            }
+
+            if (move_uploaded_file($tmp_name, $destination)) {
+                $data['foto_profil'] = $name;
+            }
+        }
 
         $this->memberModel->updateMember($id, $data);
         $this->redirect('/admin/members');

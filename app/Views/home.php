@@ -127,8 +127,7 @@
                         <div>
                             <h3 class="fw-bold mb-2">Vision</h3>
                             <p class="text-muted mb-0" style="line-height: 1.7;">
-                                <?= $visi ? htmlspecialchars($visi['isi_konten']) : 'Menjadi organisasi riset terkemuka dalam penelitian maupun pengembangan untuk mendorong inovasi teknologi serta keilmuan di bidang penyimpanan, pengolahan, dan rekayasa sistem data yang berkelanjutan' ?>
-                            </p>
+                                <?= $visi['isi_konten'] ?>
                         </div>
                     </div>
 
@@ -140,7 +139,7 @@
                         <div>
                             <h3 class="fw-bold mb-2">Mission</h3>
                             <p class="text-muted mb-0" style="line-height: 1.7;">
-                                <?= $misi ? htmlspecialchars($misi['isi_konten']) : 'Menjadi organisasi riset terkemuka dalam penelitian maupun pengembangan untuk mendorong inovasi teknologi serta keilmuan di bidang penyimpanan, pengolahan, dan rekayasa sistem data yang berkelanjutan' ?>
+                                <?= $misi['isi_konten'] ?>
                             </p>
                         </div>
                     </div>
