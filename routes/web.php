@@ -2,6 +2,7 @@
 use App\Controllers\Admin\GalleryController;
 use App\Controllers\Admin\PublicationController;
 use App\Controllers\HomeController;
+use App\Controllers\ContactController;
 use Core\Middleware\AuthMiddleware;
 use App\Controllers\AuthController;
 use App\Controllers\DashboardController;
@@ -25,6 +26,7 @@ $router->get('/gallery', [HomeController::class, 'galleryPage']);
 $router->get('/publications', [HomeController::class, 'publicationPage']);
 $router->get('/news', [HomeController::class, 'NewsPage']);
 $router->get('/login', [HomeController::class, 'loginPage']);
+$router->post('/contact/send', [ContactController::class, 'send']);
 
 // ============================================
 // Auth Routes

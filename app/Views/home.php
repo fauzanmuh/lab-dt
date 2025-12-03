@@ -293,7 +293,13 @@
             </div>
             <div class="col-lg-7">
                 <div class="card-modern p-5">
-                    <form action="">
+                    <?php if (!empty($_SESSION['flash_success'])): ?>
+                        <div class="alert alert-success mt-3">
+                            <?= $_SESSION['flash_success'] ?>
+                        </div>
+                        <?php unset($_SESSION['flash_success']); ?>
+                    <?php endif; ?>
+                    <form action="/contact/send" method="POST">
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <label for="name" class="form-label fw-bold">Full Name <span
