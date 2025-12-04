@@ -40,25 +40,29 @@ class ContactController
         $mail = new PHPMailer(true);
 
         try {
-            // SMTP config
+            // SMTP Config
             $mail->isSMTP();
-            $mail->Host = 'sandbox.smtp.mailtrap.io';
+            $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = '0115767043c001';
-            $mail->Password = 'a47de745d2a535';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port = 2525;
+            $mail->Username = 'pbl.labdt@gmail.com';
+            $mail->Password = 'zwln apxf nlcp nlrn';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
 
-            $mail->setFrom('datatechlab@college.edu', 'DT Lab');
+            // Sender
+            $mail->setFrom('pbl.labdt@gmail.com', 'Your Website');
+
+            // Receiver
             $mail->addAddress($to);
 
+            // Content
             $mail->isHTML(true);
             $mail->Subject = $subject;
             $mail->Body = $body;
 
-            $mail->send();
+            return $mail->send();
         } catch (Exception $e) {
-            error_log("Mailer Error: {$mail->ErrorInfo}");
+            return $mail->ErrorInfo;
         }
     }
 
@@ -69,7 +73,7 @@ class ContactController
         <div style='max-width:600px; margin: auto; background: #ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.05);'>
             
             <div style='background:#4a6cf7; padding:20px; text-align:center; color:white;'>
-                <img src='https://via.placeholder.com/120x40?text=LOGO' alt='Logo' style='margin-bottom:10px;'>
+                <img src='/assets/images/jti.png' alt='Logo' style='margin-bottom:10px;'>
                 <h2 style='margin:0; font-size:22px;'>New Contact Message</h2>
             </div>
 
@@ -95,7 +99,7 @@ class ContactController
         <div style='max-width:600px; margin:auto; background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.05);'>
             
             <div style='background:#6a77ff; padding:20px 20px 25px; text-align:center; color:white;'>
-                <img src='https://via.placeholder.com/120x40?text=LOGO' alt='Logo' style='margin-bottom:10px;'>
+                <img src='/assets/images/jti.png' alt='Logo' style='margin-bottom:10px;'>
                 <h2 style='margin:0; font-size:22px;'>Thanks for Reaching Out!</h2>
             </div>
 
