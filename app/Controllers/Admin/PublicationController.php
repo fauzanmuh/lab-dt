@@ -33,7 +33,7 @@ class PublicationController extends Controller
             'members' => $members,
             'pagination' => $pagination,
             'baseUrl' => '/admin/publications',
-            'pageTitle' => 'Publications Management',
+            'pageTitle' => 'Manajemen Publikasi',
             'layout' => 'layouts/admin'
         ]);
     }
@@ -51,6 +51,7 @@ class PublicationController extends Controller
         }
 
         $this->publicationModel->createPublication($data);
+        $_SESSION['flash_success'] = 'Publikasi berhasil ditambahkan.';
         $this->redirect('/admin/publications');
     }
 
@@ -64,12 +65,14 @@ class PublicationController extends Controller
         }
 
         $this->publicationModel->updatePublication($id, $data);
+        $_SESSION['flash_success'] = 'Publikasi berhasil diperbarui.';
         $this->redirect('/admin/publications');
     }
 
     public function destroy($id)
     {
         $this->publicationModel->deletePublication($id);
+        $_SESSION['flash_success'] = 'Publikasi berhasil dihapus.';
         $this->redirect('/admin/publications');
     }
 }

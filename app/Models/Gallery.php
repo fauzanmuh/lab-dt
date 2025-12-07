@@ -11,7 +11,7 @@ class Gallery extends Model
 
     public function getAllPhotos()
     {
-        $sql = "SELECT g.*, a.nama_lengkap as uploader 
+        $sql = "SELECT g.*, a.nama_lengkap as uploader, a.foto_profil, a.username 
                 FROM {$this->table} g
                 JOIN anggota a ON g.id_uploader = a.id_anggota
                 ORDER BY g.tanggal_upload DESC";
@@ -20,7 +20,7 @@ class Gallery extends Model
 
     public function getPaginatedPhotos($limit, $offset)
     {
-        $sql = "SELECT g.*, a.nama_lengkap as uploader 
+        $sql = "SELECT g.*, a.nama_lengkap as uploader, a.foto_profil, a.username 
                 FROM {$this->table} g
                 JOIN anggota a ON g.id_uploader = a.id_anggota
                 ORDER BY g.tanggal_upload DESC
@@ -37,7 +37,7 @@ class Gallery extends Model
 
     public function getPaginatedApprovedPhotos($limit, $offset)
     {
-        $sql = "SELECT g.*, a.nama_lengkap as uploader 
+        $sql = "SELECT g.*, a.nama_lengkap as uploader, a.foto_profil, a.username 
                 FROM {$this->table} g
                 JOIN anggota a ON g.id_uploader = a.id_anggota
                 WHERE g.status = 'approved'
@@ -55,12 +55,22 @@ class Gallery extends Model
 
     public function getApprovedPhotos()
     {
-        $sql = "SELECT g.*, a.nama_lengkap as uploader 
+        $sql = "SELECT g.*, a.nama_lengkap as uploader, a.foto_profil, a.username 
                 FROM {$this->table} g
                 JOIN anggota a ON g.id_uploader = a.id_anggota
                 WHERE g.status = 'approved'
                 ORDER BY g.tanggal_upload DESC";
         return $this->db->query($sql);
+    }
+
+    public function getApprovedPhotosByUploader($uploaderId)
+    {
+        $sql = "SELECT g.*, a.nama_lengkap as uploader, a.foto_profil, a.username 
+                FROM {$this->table} g
+                JOIN anggota a ON g.id_uploader = a.id_anggota
+                WHERE g.status = 'approved' AND g.id_uploader = :id
+                ORDER BY g.tanggal_upload DESC";
+        return $this->db->query($sql, ['id' => $uploaderId]);
     }
 
     public function getPhotoById($id)

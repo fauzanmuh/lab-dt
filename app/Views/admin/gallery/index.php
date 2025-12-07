@@ -1,20 +1,20 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <div>
-            <h5 class="card-title mb-1 fw-bold text-dark">Gallery Management</h5>
-            <p class="text-muted small mb-0">Manage photo gallery and documentation</p>
+            <h5 class="card-title mb-1 fw-bold text-dark">Manajemen Galeri</h5>
+            <p class="text-muted small mb-0">Kelola galeri foto dan dokumentasi</p>
         </div>
         <button type="button" class="btn btn-primary d-flex align-items-center gap-2" data-bs-toggle="modal"
             data-bs-target="#addPhotoModal">
             <i class="bi bi-cloud-upload"></i>
-            <span>Upload Photo</span>
+            <span>Unggah Foto</span>
         </button>
     </div>
     <div class="card-body">
         <?php if (empty($photos)): ?>
             <div class="text-center py-5 text-muted">
                 <i class="bi bi-images display-4 mb-3 opacity-50"></i>
-                <p class="mb-0">No photos found</p>
+                <p class="mb-0">Tidak ada foto ditemukan</p>
             </div>
         <?php else: ?>
             <div class="row g-4">
@@ -27,11 +27,11 @@
                                     style="height: 200px; object-fit: cover;">
                                 <div class="position-absolute top-0 end-0 p-2">
                                     <?php if ($photo['status'] === 'approved'): ?>
-                                        <span class="badge bg-success-subtle text-success">Approved</span>
+                                        <span class="badge bg-success-subtle text-success">Disetujui</span>
                                     <?php elseif ($photo['status'] === 'rejected'): ?>
-                                        <span class="badge bg-danger-subtle text-danger">Rejected</span>
+                                        <span class="badge bg-danger-subtle text-danger">Ditolak</span>
                                     <?php else: ?>
-                                        <span class="badge bg-warning-subtle text-warning">Pending</span>
+                                        <span class="badge bg-warning-subtle text-warning">Tertunda</span>
                                     <?php endif; ?>
                                 </div>
                                 <?php if ($photo['status'] === 'rejected' && !empty($photo['catatan_admin'])): ?>
@@ -44,23 +44,36 @@
                             </div>
                             <div class="card-body">
                                 <h6 class="card-title fw-bold text-truncate"><?= htmlspecialchars($photo['deskripsi']) ?></h6>
-                                <p class="card-text small text-muted mb-2">
-                                    <i class="bi bi-person me-1"></i> <?= htmlspecialchars($photo['uploader']) ?>
-                                </p>
-                                <p class="card-text small text-muted">
-                                    <i class="bi bi-calendar me-1"></i>
-                                    <?= date('M d, Y', strtotime($photo['tanggal_upload'])) ?>
-                                </p>
+                                <div class="d-flex align-items-center gap-2 mt-3">
+                                    <div class="avatar-sm bg-light rounded-circle overflow-hidden"
+                                        style="width: 32px; height: 32px;">
+                                        <?php if (!empty($photo['foto_profil'])): ?>
+                                            <img src="/uploads/foto_profil/<?= htmlspecialchars($photo['foto_profil']) ?>"
+                                                alt="Profile" class="w-100 h-100 object-fit-cover">
+                                        <?php else: ?>
+                                            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary fw-bold"
+                                                style="font-size: 0.8rem;">
+                                                <?= strtoupper(substr($photo['uploader'], 0, 1)) ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span
+                                            class="text-sm fw-medium text-dark"><?= htmlspecialchars($photo['uploader']) ?></span>
+                                        <span
+                                            class="text-xs text-muted"><?= date('d M Y', strtotime($photo['tanggal_upload'])) ?></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
                                 <button class="btn btn-sm btn-light text-primary"
                                     onclick="editPhoto(<?= $photo['id_galeri'] ?>, '<?= htmlspecialchars($photo['deskripsi']) ?>', '<?= $photo['status'] ?>', '<?= htmlspecialchars($photo['catatan_admin'] ?? '') ?>', '<?= htmlspecialchars($photo['file_path']) ?>')"
-                                    data-bs-toggle="modal" data-bs-target="#editPhotoModal" title="Edit Details">
+                                    data-bs-toggle="modal" data-bs-target="#editPhotoModal" title="Edit Detail">
                                     <i class="bi bi-pencil"></i> Edit
                                 </button>
                                 <button type="button" class="btn btn-sm btn-light text-danger"
-                                    onclick="confirmDelete(<?= $photo['id_galeri'] ?>)" title="Delete Photo">
-                                    <i class="bi bi-trash"></i> Delete
+                                    onclick="confirmDelete(<?= $photo['id_galeri'] ?>)" title="Hapus Foto">
+                                    <i class="bi bi-trash"></i> Hapus
                                 </button>
                                 <form id="deleteForm-<?= $photo['id_galeri'] ?>"
                                     action="/admin/gallery/<?= $photo['id_galeri'] ?>/delete" method="POST" class="d-none">
@@ -81,23 +94,23 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-bold">Upload New Photo</h5>
+                <h5 class="modal-title fw-bold">Unggah Foto Baru</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="/admin/gallery" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="file_path" class="form-label">Photo File</label>
+                        <label for="file_path" class="form-label">Berkas Foto</label>
                         <input type="file" class="form-control" id="file_path" name="file_path" accept="image/*"
                             required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="deskripsi" class="form-label">Description</label>
+                        <label for="deskripsi" class="form-label">Deskripsi</label>
                         <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="id_uploader" class="form-label">Uploader</label>
+                        <label for="id_uploader" class="form-label">Pengunggah</label>
                         <select class="form-select" id="id_uploader" name="id_uploader" required>
                             <?php foreach ($members as $member): ?>
                                 <option value="<?= $member['id_anggota'] ?>">
@@ -110,16 +123,16 @@
                         <div class="mb-3">
                             <label for="status" class="form-label">Status</label>
                             <select class="form-select" id="status" name="status">
-                                <option value="pending">Pending</option>
-                                <option value="approved">Approved</option>
-                                <option value="rejected">Rejected</option>
+                                <option value="pending">Tertunda</option>
+                                <option value="approved">Disetujui</option>
+                                <option value="rejected">Ditolak</option>
                             </select>
                         </div>
                     <?php endif; ?>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary px-4">Upload Photo</button>
+                    <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary px-4">Unggah Foto</button>
                 </div>
             </form>
         </div>
@@ -131,22 +144,22 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-bold">Edit Photo Details</h5>
+                <h5 class="modal-title fw-bold">Edit Detail Foto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="editPhotoForm" action="" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="edit_file_path" class="form-label">Replace Photo (Optional)</label>
+                        <label for="edit_file_path" class="form-label">Ganti Foto (Opsional)</label>
                         <input type="file" class="form-control" id="edit_file_path" name="file_path" accept="image/*">
                         <div class="mt-2" id="current_photo_container">
-                            <small class="text-muted d-block mb-1">Current Photo:</small>
+                            <small class="text-muted d-block mb-1">Foto Saat Ini:</small>
                             <img src="" id="current_photo" class="img-fluid rounded border" style="max-height: 100px;">
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="edit_deskripsi" class="form-label">Description</label>
+                        <label for="edit_deskripsi" class="form-label">Deskripsi</label>
                         <textarea class="form-control" id="edit_deskripsi" name="deskripsi" rows="3"
                             required></textarea>
                     </div>
@@ -154,21 +167,21 @@
                         <div class="mb-3">
                             <label for="edit_status" class="form-label">Status</label>
                             <select class="form-select" id="edit_status" name="status">
-                                <option value="pending">Pending</option>
-                                <option value="approved">Approved</option>
-                                <option value="rejected">Rejected</option>
+                                <option value="pending">Tertunda</option>
+                                <option value="approved">Disetujui</option>
+                                <option value="rejected">Ditolak</option>
                             </select>
                         </div>
                     <?php endif; ?>
                     <div class="mb-3" id="gallery_rejection_note_container" style="display: none;">
-                        <label class="form-label text-danger">Rejection Note</label>
+                        <label class="form-label text-danger">Catatan Penolakan</label>
                         <div class="alert alert-danger bg-danger-subtle border-danger text-danger p-2 mb-0 text-sm"
                             id="gallery_rejection_note"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary px-4">Update Changes</button>
+                    <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary px-4">Simpan Perubahan</button>
                 </div>
             </form>
         </div>
@@ -180,15 +193,15 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-bold text-danger">Confirm Deletion</h5>
+                <h5 class="modal-title fw-bold text-danger">Konfirmasi Penghapusan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this photo? This action cannot be undone.
+                Apakah Anda yakin ingin menghapus foto ini? Tindakan ini tidak dapat dibatalkan.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Hapus</button>
             </div>
         </div>
     </div>
@@ -250,7 +263,7 @@
 
             if (!isValid) {
                 e.preventDefault();
-                alert('Please fill in all required fields.');
+                alert('Harap isi semua kolom yang wajib diisi.');
             }
         });
 

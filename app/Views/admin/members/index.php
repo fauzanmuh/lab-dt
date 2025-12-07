@@ -18,6 +18,7 @@
                 <thead class="bg-light">
                     <tr>
                         <th class="ps-4 text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Anggota</th>
+                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Email</th>
                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">NIP/NIM</th>
                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Role</th>
                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Status</th>
@@ -57,6 +58,9 @@
                                     </div>
                                 </td>
                                 <td>
+                                    <span class="text-secondary text-sm"><?= htmlspecialchars($member['email']) ?></span>
+                                </td>
+                                <td>
                                     <span
                                         class="text-secondary text-sm"><?= htmlspecialchars($member['nip_nim'] ?? '-') ?></span>
                                 </td>
@@ -73,7 +77,7 @@
                                 <td class="text-end pe-4">
                                     <div class="d-flex align-items-center gap-1 justify-content-end">
                                         <button class="btn btn-sm btn-light text-primary"
-                                            onclick="editMember('<?= $member['id_anggota'] ?>', '<?= htmlspecialchars($member['nama_lengkap']) ?>', '<?= htmlspecialchars($member['username']) ?>', '<?= htmlspecialchars($member['nip_nim'] ?? '') ?>', '<?= $member['role'] ?>', <?= $member['status_aktif'] ? 'true' : 'false' ?>)"
+                                            onclick="editMember('<?= $member['id_anggota'] ?>', '<?= htmlspecialchars($member['nama_lengkap']) ?>', '<?= htmlspecialchars($member['username']) ?>', '<?= htmlspecialchars($member['email']) ?>', '<?= htmlspecialchars($member['nip_nim'] ?? '') ?>', '<?= $member['role'] ?>', <?= $member['status_aktif'] ? 'true' : 'false' ?>)"
                                             data-bs-toggle="modal" data-bs-target="#editMemberModal" title="Edit Member">
                                             <i class="bi bi-pencil"></i>
                                         </button>
@@ -138,6 +142,15 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-envelope text-muted"></i></span>
+                            <input type="email" class="form-control border-start-0 ps-0" id="email" name="email"
+                                required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label for="nip_nim" class="form-label">NIP / NIM</label>
                         <div class="input-group">
                             <span class="input-group-text bg-light border-end-0"><i
@@ -163,7 +176,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary px-4">Tambah</button>
                 </div>
             </form>
@@ -176,7 +189,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-bold">Edit Member</h5>
+                <h5 class="modal-title fw-bold">Edit Anggota</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="editMemberForm" action="" method="POST" enctype="multipart/form-data">
@@ -207,6 +220,15 @@
                                     class="bi bi-at text-muted"></i></span>
                             <input type="text" class="form-control border-start-0 ps-0" id="edit_username"
                                 name="username" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_email" class="form-label">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-envelope text-muted"></i></span>
+                            <input type="email" class="form-control border-start-0 ps-0" id="edit_email" name="email"
+                                required>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -320,10 +342,10 @@
         });
     });
 
-    function editMember(id, nama, username, nip, role, status) {
+    function editMember(id, nama, username, email, nip, role, status) {
         // Update form action for POST update
         $('#editMemberForm').attr('action', '/admin/members/' + id + '/update');
-
+        $('#edit_email').val(email);
         $('#edit_nama_lengkap').val(nama);
         $('#edit_username').val(username);
         $('#edit_nip_nim').val(nip);

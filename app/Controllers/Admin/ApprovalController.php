@@ -52,7 +52,7 @@ class ApprovalController extends Controller
             'pendingNews' => $pendingNews,
             'pendingGallery' => $pendingGallery,
             'pendingPublications' => $pendingPublications,
-            'pageTitle' => 'Pending Approvals',
+            'pageTitle' => 'Persetujuan Tertunda',
             'layout' => 'layouts/admin'
         ]);
     }

@@ -20,7 +20,7 @@
                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tanggal</th>
                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Status</th>
                         <th class="text-end pe-4 text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
-                            Actions</th>
+                            Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,10 +57,20 @@
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
-                                        <div class="avatar" style="width: 24px; height: 24px; font-size: 10px;">
-                                            <?= strtoupper(substr($item['penulis'] ?? 'A', 0, 1)) ?>
+                                        <div class="avatar-sm bg-light rounded-circle overflow-hidden" style="width: 32px; height: 32px;">
+                                            <?php if (!empty($item['foto_profil'])): ?>
+                                                <img src="/uploads/foto_profil/<?= htmlspecialchars($item['foto_profil']) ?>" 
+                                                     alt="Profile" class="w-100 h-100 object-fit-cover">
+                                            <?php else: ?>
+                                                <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary fw-bold" style="font-size: 0.8rem;">
+                                                    <?= strtoupper(substr($item['penulis'] ?? 'A', 0, 1)) ?>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
-                                        <span class="text-sm"><?= htmlspecialchars($item['penulis'] ?? 'Unknown') ?></span>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-sm fw-medium text-dark"><?= htmlspecialchars($item['penulis'] ?? 'Unknown') ?></span>
+                                            <span class="text-xs text-muted">@<?= htmlspecialchars($item['username'] ?? '') ?></span>
+                                        </div>
                                     </div>
                                 </td>
                                 <td>
@@ -74,8 +84,13 @@
                                         'rejected' => 'bg-danger-subtle text-danger',
                                         default => 'bg-warning-subtle text-warning'
                                     };
+                                    $statusLabel = match ($item['status']) {
+                                        'approved' => 'Disetujui',
+                                        'rejected' => 'Ditolak',
+                                        default => 'Tertunda'
+                                    };
                                     ?>
-                                    <span class="badge <?= $statusClass ?> border"><?= ucfirst($item['status']) ?></span>
+                                    <span class="badge <?= $statusClass ?> border"><?= $statusLabel ?></span>
                                     <?php if ($item['status'] === 'rejected' && !empty($item['catatan_admin'])): ?>
                                         <div class="mt-1 text-xs text-danger">
                                             <i class="bi bi-exclamation-circle me-1"></i>
@@ -91,12 +106,13 @@
                                             data-penulis="<?= $item['id_penulis'] ?>" data-status="<?= $item['status'] ?>"
                                             data-gambar="<?= htmlspecialchars($item['gambar_utama'] ?? '') ?>"
                                             data-catatan="<?= htmlspecialchars($item['catatan_admin'] ?? '') ?>"
+                                            data-catatan="<?= htmlspecialchars($item['catatan_admin'] ?? '') ?>"
                                             onclick="editNews(this)" data-bs-toggle="modal" data-bs-target="#editNewsModal"
-                                            title="Edit News">
+                                            title="Edit Berita">
                                             <i class="bi bi-pencil"></i>
                                         </button>
                                         <button type="button" class="btn btn-sm btn-light text-danger"
-                                            onclick="confirmDelete('<?= $item['id_berita'] ?>')" title="Delete News">
+                                            onclick="confirmDelete('<?= $item['id_berita'] ?>')" title="Hapus Berita">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </div>
@@ -153,9 +169,9 @@
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
                                     <select class="form-select" id="status" name="status">
-                                        <option value="pending">Pending</option>
-                                        <option value="approved">Published</option>
-                                        <option value="rejected">Rejected</option>
+                                        <option value="pending">Tertunda</option>
+                                        <option value="approved">Diterbitkan</option>
+                                        <option value="rejected">Ditolak</option>
                                     </select>
                                 </div>
                             <?php endif; ?>
@@ -169,7 +185,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary px-4">Simpan Berita</button>
                 </div>
             </form>
@@ -215,9 +231,9 @@
                                 <div class="mb-3">
                                     <label for="edit_status" class="form-label">Status</label>
                                     <select class="form-select" id="edit_status" name="status">
-                                        <option value="pending">Pending</option>
-                                        <option value="approved">Published</option>
-                                        <option value="rejected">Rejected</option>
+                                        <option value="pending">Tertunda</option>
+                                        <option value="approved">Diterbitkan</option>
+                                        <option value="rejected">Ditolak</option>
                                     </select>
                                 </div>
                             <?php endif; ?>

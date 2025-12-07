@@ -95,56 +95,31 @@
         </div>
 
         <div class="row g-4 mb-5">
-            <div class="col-lg-4">
-                <div class="card shadow rounded-3 p-3 card-news">
-                    <div class="text-center">
-                        <img src="/assets/images/frame.png" alt="Facility Image" class="w-100 rounded-3"
-                            style="height: 189px; object-fit: cover;">
-                    </div>
-                    <div class="card-body text-start p-0">
-                        <h5 class="card-title fw-semibold py-3 fs-6 m-0" style="color: #5F983C;">Penelitian</h5>
-                        <p class="card-text all-text-gradient">
-                            Sistem Prediksi Penjualan Frozen Food dengan Metode Monte Carlo
-                            (Studi Kasus: Supermama Frozen Food)
-                        </p>
-                        <p class="text-muted small mt-2">20 Desember 2022</p>
-                        <a href="#" class="btn btn-outline-dark mt-2 w-100">Selengkapnya</a>
-                    </div>
+            <?php if (empty($news)): ?>
+                <div class="mt-4 border rounded-4 p-4 text-center">
+                    <p class="text-muted mb-0">Belum ada berita.</p>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card shadow rounded-3 p-3 card-news">
-                    <div class="text-center">
-                        <img src="/assets/images/frame.png" alt="Facility Image" class="w-100 rounded-3"
-                            style="height: 189px; object-fit: cover;">
+            <?php else: ?>
+                <?php foreach ($news as $n): ?>
+                    <div class="col-lg-4">
+                        <div class="card shadow rounded-3 p-3 card-news">
+                            <div class="text-center">
+                                <img src="/<?= str_replace(' ', '%20', $n['gambar_utama']) ?>" alt="News Image"
+                                    class="w-100 rounded-3" style="height: 189px; object-fit: cover;">
+                            </div>
+                            <div class="card-body text-start p-0">
+                                <h5 class="card-title fw-semibold py-3 fs-6 m-0" style="color: #5F983C;">Penelitian</h5>
+                                <p class="card-text all-text-gradient fw-semibold">
+                                    <?= htmlspecialchars($n['judul']) ?>
+                                </p>
+                                <p class="text-muted small mt-2">
+                                    <?= date('d F Y', strtotime($n['tanggal_posting'])) ?>
+                                </p>
+                                <a href="#" class="btn btn-outline-dark mt-2 w-100">Selengkapnya</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body text-start p-0">
-                        <h5 class="card-title fw-semibold py-3 fs-6 m-0" style="color: #5F983C;">Penelitian</h5>
-                        <p class="card-text all-text-gradient">
-                            Sistem Prediksi Penjualan Frozen Food dengan Metode Monte Carlo
-                            (Studi Kasus: Supermama Frozen Food)
-                        </p>
-                        <p class="text-muted small mt-2">20 Desember 2022</p>
-                        <a href="#" class="btn btn-outline-dark mt-2 w-100">Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card shadow rounded-3 p-3 card-news">
-                    <div class="text-center">
-                        <img src="/assets/images/frame.png" alt="Facility Image" class="w-100 rounded-3"
-                            style="height: 189px; object-fit: cover;">
-                    </div>
-                    <div class="card-body text-start p-0">
-                        <h5 class="card-title fw-semibold py-3 fs-6 m-0" style="color: #5F983C;">Penelitian</h5>
-                        <p class="card-text all-text-gradient">
-                            Sistem Prediksi Penjualan Frozen Food dengan Metode Monte Carlo
-                            (Studi Kasus: Supermama Frozen Food)
-                        </p>
-                        <p class="text-muted small mt-2">20 Desember 2022</p>
-                        <a href="#" class="btn btn-outline-dark mt-2 w-100">Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>

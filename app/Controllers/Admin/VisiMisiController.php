@@ -17,25 +17,26 @@ class VisiMisiController extends Controller
     public function index()
     {
         $visiMisi = $this->visiMisiModel->getAllVisiMisi();
-        return $this->view('admin/visimisi/index', ['visiMisi' => $visiMisi, 'pageTitle' => 'Vision & Mission Management', 'layout' => 'layouts/admin']);
+        return $this->view('admin/visimisi/index', ['visiMisi' => $visiMisi, 'pageTitle' => 'Manajemen Visi Misi', 'layout' => 'layouts/admin']);
     }
 
     public function store()
     {
         $data = $_POST;
 
-        // Tambahkan pengecekan data untuk menghindari Notice PHP
-        if (isset($data['jenis_konten']) && isset($data['isi_konten'])) {
-            // Model sekarang menerima data yang benar
-            $this->visiMisiModel->upsertVisiMisi($data['jenis_konten'], $data['isi_konten']);
-            // Redirect kembali ke halaman manajemen (konsisten dengan controller lain)
-            $this->redirect('/admin/visimisi');
-            return;
+        // Handle standard form submission (visi and misi)
+        if (isset($data['visi'])) {
+            $this->visiMisiModel->upsertVisiMisi('visi', $data['visi']);
+        }
+        if (isset($data['misi'])) {
+            $this->visiMisiModel->upsertVisiMisi('misi', $data['misi']);
         }
 
-        // Opsional: respons error jika data tidak lengkap
+        // Set flash message
+        $_SESSION['flash_success'] = 'Visi dan Misi berhasil diperbarui.';
+
+        // Redirect back
         $this->redirect('/admin/visimisi');
-        return;
     }
 
     public function update($id)

@@ -34,6 +34,7 @@ CREATE TYPE kondisi_enum AS ENUM ('baik', 'rusak_ringan', 'rusak_berat');
 CREATE TABLE anggota (
     id_anggota SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     nama_lengkap VARCHAR(100) NOT NULL,
     nip_nim VARCHAR(20),
@@ -53,13 +54,17 @@ CREATE TABLE profil_lab (
 -- C. Tabel Info Lab (Kontak & Footer)
 CREATE TABLE info_lab (
     id SERIAL PRIMARY KEY,
-    nama_lab VARCHAR(100) DEFAULT 'Applied Informatics Laboratory',
+    nama_lab VARCHAR(100) DEFAULT 'Lab Data Teknologi',
     alamat TEXT,
     email VARCHAR(100),
     telepon VARCHAR(20),
     link_maps TEXT,
     link_instagram VARCHAR(255),
-    link_youtube VARCHAR(255)
+    link_youtube VARCHAR(255),
+    link_linkedin VARCHAR(255),
+    link_facebook VARCHAR(255),
+    link_twitter VARCHAR(255),
+    deskripsi TEXT
 );
 -- D. Tabel Berita
 -- Mencakup kolom approval sesuai User Req B.1 (Alur Persetujuan)

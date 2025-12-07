@@ -42,6 +42,7 @@ class AuthController extends Controller
                     'nama_lengkap' => $user['nama_lengkap'],
                     'nip_nim' => $user['nip_nim'],
                     'foto_profil' => $user['foto_profil'],
+                    'email' => $user['email'],
                     'status_aktif' => $user['status_aktif']
                 ];
                 return $this->redirect('/admin/dashboard');

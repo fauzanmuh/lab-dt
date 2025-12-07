@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?? 'Admin Dashboard' ?></title>
+    <title><?= $title ?? 'Dashboard Admin' ?></title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -339,12 +339,12 @@
             </a>
             <a href="/admin/members" class="nav-link <?= strpos($uri, '/admin/members') === 0 ? 'active' : '' ?>">
                 <i class="bi bi-person-badge"></i>
-                <span>Members</span>
+                <span>Anggota</span>
             </a>
             <a href="/admin/publications"
                 class="nav-link <?= strpos($uri, '/admin/publications') === 0 ? 'active' : '' ?>">
                 <i class="bi bi-journal-text"></i>
-                <span>Publications</span>
+                <span>Publikasi</span>
             </a>
             <a href="/admin/visimisi" class="nav-link <?= strpos($uri, '/admin/visimisi') === 0 ? 'active' : '' ?>">
                 <i class="bi bi-building"></i>
@@ -352,26 +352,26 @@
             </a>
             <a href="/admin/gallery" class="nav-link <?= strpos($uri, '/admin/gallery') === 0 ? 'active' : '' ?>">
                 <i class="bi bi-images"></i>
-                <span>Gallery</span>
+                <span>Galeri</span>
             </a>
-            <a href="/admin/contact" class="nav-link <?= strpos($uri, '/admin/contact') === 0 ? 'active' : '' ?>">
+            <a href="/admin/info-lab" class="nav-link <?= strpos($uri, '/admin/info-lab') === 0 ? 'active' : '' ?>">
                 <i class="bi bi-info-circle"></i>
                 <span>Info Lab</span>
             </a>
             <a href="/admin/news" class="nav-link <?= strpos($uri, '/admin/news') === 0 ? 'active' : '' ?>">
                 <i class="bi bi-newspaper"></i>
-                <span>News</span>
+                <span>Berita</span>
             </a>
             <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
                 <a href="/admin/approvals" class="nav-link <?= strpos($uri, '/admin/approvals') === 0 ? 'active' : '' ?>">
                     <i class="bi bi-check-circle"></i>
-                    <span>Approvals</span>
+                    <span>Persetujuan</span>
                 </a>
             <?php endif; ?>
             <div class="mt-auto border-top pt-2">
                 <a href="/logout" class="nav-link text-danger">
                     <i class="bi bi-box-arrow-right"></i>
-                    <span>Logout</span>
+                    <span>Keluar</span>
                 </a>
             </div>
         </nav>
@@ -384,18 +384,30 @@
                 <i class="bi bi-list fs-4"></i>
             </button>
             <h4 class="m-0 fw-semibold"><?= $pageTitle ?? 'Dashboard' ?></h4>
-            <a href="/admin/my-profile" class="user-menu text-decoration-none text-dark">
+            <div class="user-menu text-decoration-none text-dark">
                 <div class="text-end d-none d-sm-block">
-                    <div class="fw-semibold"><?= $user['name'] ?? 'Admin User' ?></div>
+                    <div class="fw-semibold"><?= $user['nama_lengkap'] ?? 'Admin User' ?></div>
                     <small class="text-muted"><?= $user['email'] ?? 'admin@example.com' ?></small>
                 </div>
-                <div class="avatar"><?= strtoupper(substr($user['name'] ?? 'A', 0, 1)) ?></div>
-            </a>
+                <div class="avatar overflow-hidden rounded-circle d-flex align-items-center justify-content-center"
+                    style="width: 32px; height: 32px;">
+                    <?php if (!empty($user['foto_profil'])): ?>
+                        <img src="/uploads/foto_profil/<?= htmlspecialchars($user['foto_profil']) ?>" alt="Profile"
+                            class="w-100 h-100 object-fit-cover">
+                    <?php else: ?>
+                        <div class="bg-light text-primary w-100 h-100 d-flex align-items-center justify-content-center">
+                            <?= strtoupper(substr($user['nama_lengkap'], 0, 2)) ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
 
         <?= $content ?? '' ?>
     </div>
 
+
+    <?php include __DIR__ . '/../components/toast.php'; ?>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

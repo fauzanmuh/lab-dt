@@ -161,8 +161,9 @@ class Router
         $route = $this->findRoute($method, $uri);
 
         if ($route === null) {
-            http_response_code(404);
-            echo "404 Not Found";
+            // Handle 404 via HomeController to use layout
+            $controller = new \App\Controllers\HomeController();
+            echo $controller->notFound();
             return;
         }
 

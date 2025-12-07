@@ -11,6 +11,7 @@ use App\Controllers\Admin\VisiMisiController;
 use App\Middlewares\AdminMiddleware;
 use App\Controllers\Admin\NewsController;
 use App\Controllers\Admin\ApprovalController;
+use App\Controllers\Admin\InfoLabController;
 
 $router = $app->router();
 
@@ -26,7 +27,9 @@ $router->get('/gallery', [HomeController::class, 'galleryPage']);
 $router->get('/publications', [HomeController::class, 'publicationPage']);
 $router->get('/news', [HomeController::class, 'NewsPage']);
 $router->get('/login', [HomeController::class, 'loginPage']);
+$router->get('/contact', [ContactController::class, 'index']);
 $router->post('/contact/send', [ContactController::class, 'send']);
+$router->get('/member/{id}', [HomeController::class, 'memberDetail']);
 
 // ============================================
 // Auth Routes
@@ -57,6 +60,10 @@ $app->router()->get('/admin/approvals', [ApprovalController::class, 'index'])->m
 $app->router()->post('/admin/approvals/{type}/{id}/approve', [ApprovalController::class, 'approve'])->middleware([AuthMiddleware::class, AdminMiddleware::class]);
 $app->router()->post('/admin/approvals/{type}/{id}/reject', [ApprovalController::class, 'reject'])->middleware([AuthMiddleware::class, AdminMiddleware::class]);
 
+// Lab Info Routes
+$app->router()->get('/admin/info-lab', [InfoLabController::class, 'index'])->middleware([AuthMiddleware::class]);
+$app->router()->post('/admin/info-lab/update', [InfoLabController::class, 'update'])->middleware([AuthMiddleware::class]);
+
 // Gallery Routes
 $app->router()->get('/admin/gallery', [GalleryController::class, 'index'])->middleware([AuthMiddleware::class]);
 $app->router()->post('/admin/gallery', [GalleryController::class, 'store'])->middleware([AuthMiddleware::class]);
@@ -75,6 +82,7 @@ $app->router()->post('/admin/news', [NewsController::class, 'store'])->middlewar
 $app->router()->post('/admin/news/{id}/update', [NewsController::class, 'update'])->middleware([AuthMiddleware::class]);
 $app->router()->post('/admin/news/{id}/delete', [NewsController::class, 'destroy'])->middleware([AuthMiddleware::class]);
 
+// Lab I
 // ============================================
 // Example Routes (Commented for Reference)
 // ============================================

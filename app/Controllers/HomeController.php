@@ -8,6 +8,7 @@ use App\Models\VisiMisi;
 use App\Models\News;
 use App\Models\Gallery;
 use App\Models\Publication;
+use App\Models\Member;
 
 /**
  * Home Controller
@@ -17,12 +18,14 @@ class HomeController extends Controller
     protected $newsModel;
     protected $galleryModel;
     protected $publicationModel;
+    protected $memberModel;
 
     public function __construct()
     {
         $this->newsModel = $this->loadModel(News::class);
         $this->galleryModel = $this->loadModel(Gallery::class);
         $this->publicationModel = $this->loadModel(Publication::class);
+        $this->memberModel = $this->loadModel(Member::class);
     }
 
     /**
@@ -40,6 +43,13 @@ class HomeController extends Controller
         $gallery = $this->galleryModel->getApprovedPhotos();
         $gallery = array_slice($gallery, 0, 6);
 
+        // Fetch members for homepage
+        $headOfLab = $this->memberModel->getMembersByRole('admin');
+        $labMembers = $this->memberModel->getMembersByRole('operator');
+
+        // Limit members if needed, e.g., take top 3
+        $labMembers = array_slice($labMembers, 0, 3);
+
         return $this->view('home', [
             'title' => 'Welcome to Profile Lab DT',
             'message' => 'Welcome to Profile Lab DT',
@@ -47,7 +57,9 @@ class HomeController extends Controller
             'misi' => $misi,
             'recentPublications' => $recentPublications,
             'mostCitedPublications' => $mostCitedPublications,
-            'gallery' => $gallery
+            'gallery' => $gallery,
+            'headOfLab' => $headOfLab,
+            'labMembers' => $labMembers
         ]);
     }
 
@@ -104,8 +116,18 @@ class HomeController extends Controller
 
     public function NewsPage()
     {
+        $page = $_GET['page'] ?? 1;
+        $limit = 10;
+        $total = $this->newsModel->countAllNews();
+        $pagination = new Pagination($total, $limit, $page);
+
+        $news = $this->newsModel->getApprovedNews($limit, $pagination->getOffset());
+
         return $this->view('news', [
-            'title' => 'News - Profile Lab DT'
+            'title' => 'News - Profile Lab DT',
+            'news' => $news,
+            'pagination' => $pagination,
+            'baseUrl' => '/news'
         ]);
     }
 
@@ -114,6 +136,39 @@ class HomeController extends Controller
     {
         return $this->view('login', [
             'title' => 'Login - Profile Lab DT'
+        ]);
+    }
+
+    public function memberDetail($id)
+    {
+        $member = $this->memberModel->getMemberById($id);
+
+        if (!$member) {
+            // Handle 404 or redirect
+            return $this->view('404', [
+                'title' => 'Page Not Found - Profile Lab DT',
+                'path' => "member/{$id}"
+            ]);
+        }
+
+        $news = $this->newsModel->getApprovedNewsByAuthor($id);
+        $publications = $this->publicationModel->getApprovedPublicationsByAuthor($id);
+        $gallery = $this->galleryModel->getApprovedPhotosByUploader($id);
+
+        return $this->view('member_detail', [
+            'title' => $member['nama_lengkap'] . ' - Profile Lab DT',
+            'member' => $member,
+            'news' => $news,
+            'publications' => $publications,
+            'gallery' => $gallery
+        ]);
+    }
+
+    public function notFound()
+    {
+        http_response_code(404);
+        return $this->view('404', [
+            'title' => 'Page Not Found - Profile Lab DT'
         ]);
     }
 }

@@ -11,7 +11,7 @@ class Publication extends Model
 
     public function getAllPublications()
     {
-        $sql = "SELECT p.*, a.nama_lengkap as nama_penulis 
+        $sql = "SELECT p.*, a.nama_lengkap as nama_penulis, a.foto_profil, a.username 
                 FROM {$this->table} p
                 JOIN anggota a ON p.id_anggota = a.id_anggota
                 ORDER BY p.tahun_terbit DESC";
@@ -20,7 +20,7 @@ class Publication extends Model
 
     public function getPaginatedPublications($limit, $offset)
     {
-        $sql = "SELECT p.*, a.nama_lengkap as nama_penulis 
+        $sql = "SELECT p.*, a.nama_lengkap as nama_penulis, a.foto_profil, a.username 
                 FROM {$this->table} p
                 JOIN anggota a ON p.id_anggota = a.id_anggota
                 ORDER BY p.tahun_terbit DESC
@@ -37,7 +37,7 @@ class Publication extends Model
 
     public function getPaginatedApprovedPublications($limit, $offset)
     {
-        $sql = "SELECT p.*, a.nama_lengkap as nama_penulis 
+        $sql = "SELECT p.*, a.nama_lengkap as nama_penulis, a.foto_profil, a.username 
                 FROM {$this->table} p
                 JOIN anggota a ON p.id_anggota = a.id_anggota
                 WHERE p.status = 'approved'
@@ -55,12 +55,22 @@ class Publication extends Model
 
     public function getApprovedPublications()
     {
-        $sql = "SELECT p.*, a.nama_lengkap as nama_penulis 
+        $sql = "SELECT p.*, a.nama_lengkap as nama_penulis, a.foto_profil, a.username 
                 FROM {$this->table} p
                 JOIN anggota a ON p.id_anggota = a.id_anggota
                 WHERE p.status = 'approved'
                 ORDER BY p.tahun_terbit DESC, p.id_publikasi DESC";
         return $this->db->query($sql);
+    }
+
+    public function getApprovedPublicationsByAuthor($authorId)
+    {
+        $sql = "SELECT p.*, a.nama_lengkap as nama_penulis, a.foto_profil, a.username 
+                FROM {$this->table} p
+                JOIN anggota a ON p.id_anggota = a.id_anggota
+                WHERE p.status = 'approved' AND p.id_anggota = :id
+                ORDER BY p.tahun_terbit DESC, p.id_publikasi DESC";
+        return $this->db->query($sql, ['id' => $authorId]);
     }
 
     public function getPublicationById($id)

@@ -33,7 +33,7 @@ class NewsController extends Controller
             'members' => $members,
             'pagination' => $pagination,
             'baseUrl' => '/admin/news',
-            'pageTitle' => 'News Management',
+            'pageTitle' => 'Manajemen Berita',
             'layout' => 'layouts/admin'
         ]);
     }
@@ -63,6 +63,7 @@ class NewsController extends Controller
         }
 
         $this->newsModel->createNews($data);
+        $_SESSION['flash_success'] = 'Berita berhasil ditambahkan.';
         $this->redirect('/admin/news');
     }
 
@@ -97,6 +98,7 @@ class NewsController extends Controller
         }
 
         $this->newsModel->updateNews($id, $data);
+        $_SESSION['flash_success'] = 'Berita berhasil diperbarui.';
         $this->redirect('/admin/news');
     }
 
@@ -109,6 +111,7 @@ class NewsController extends Controller
         }
 
         $this->newsModel->deleteNews($id);
+        $_SESSION['flash_success'] = 'Berita berhasil dihapus.';
         $this->redirect('/admin/news');
     }
 }

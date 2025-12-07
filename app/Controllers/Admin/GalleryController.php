@@ -33,7 +33,7 @@ class GalleryController extends Controller
             'members' => $members,
             'pagination' => $pagination,
             'baseUrl' => '/admin/gallery',
-            'pageTitle' => 'Gallery Management',
+            'pageTitle' => 'Manajemen Galeri',
             'layout' => 'layouts/admin'
         ]);
     }
@@ -63,6 +63,7 @@ class GalleryController extends Controller
         }
 
         $this->galleryModel->createPhoto($data);
+        $_SESSION['flash_success'] = 'Foto berhasil ditambahkan.';
         $this->redirect('/admin/gallery');
     }
 
@@ -96,6 +97,7 @@ class GalleryController extends Controller
         }
 
         $this->galleryModel->updatePhoto($id, $data);
+        $_SESSION['flash_success'] = 'Foto berhasil diperbarui.';
         $this->redirect('/admin/gallery');
     }
 
@@ -108,6 +110,7 @@ class GalleryController extends Controller
         }
 
         $this->galleryModel->deletePhoto($id);
+        $_SESSION['flash_success'] = 'Foto berhasil dihapus.';
         $this->redirect('/admin/gallery');
     }
 }

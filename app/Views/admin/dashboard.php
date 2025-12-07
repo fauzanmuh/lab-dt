@@ -4,14 +4,14 @@
         <div class="card border-0 shadow-sm h-100">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h6 class="text-muted mb-0">Total Users</h6>
+                    <h6 class="text-muted mb-0">Total Pengguna</h6>
                     <div class="p-2 bg-primary bg-opacity-10 rounded-circle">
                         <i class="bi bi-people text-primary"></i>
                     </div>
                 </div>
                 <h3 class="fw-bold mb-1"><?= $stats['users'] ?? 0 ?></h3>
                 <small class="text-muted fw-medium">
-                    Registered members
+                    Anggota terdaftar
                 </small>
             </div>
         </div>
@@ -20,14 +20,14 @@
         <div class="card border-0 shadow-sm h-100">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h6 class="text-muted mb-0">Total Publications</h6>
+                    <h6 class="text-muted mb-0">Total Publikasi</h6>
                     <div class="p-2 bg-success bg-opacity-10 rounded-circle">
                         <i class="bi bi-journal-text text-success"></i>
                     </div>
                 </div>
                 <h3 class="fw-bold mb-1"><?= $stats['publications'] ?? 0 ?></h3>
                 <small class="text-muted fw-medium">
-                    Research items
+                    Item penelitian
                 </small>
             </div>
         </div>
@@ -36,14 +36,14 @@
         <div class="card border-0 shadow-sm h-100">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h6 class="text-muted mb-0">Total Content</h6>
+                    <h6 class="text-muted mb-0">Total Konten</h6>
                     <div class="p-2 bg-info bg-opacity-10 rounded-circle">
                         <i class="bi bi-collection text-info"></i>
                     </div>
                 </div>
                 <h3 class="fw-bold mb-1"><?= ($stats['news'] ?? 0) + ($stats['gallery'] ?? 0) ?></h3>
                 <small class="text-muted fw-medium">
-                    News & Gallery
+                    Berita & Galeri
                 </small>
             </div>
         </div>
@@ -52,14 +52,14 @@
         <div class="card border-0 shadow-sm h-100">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h6 class="text-muted mb-0">Pending Approvals</h6>
+                    <h6 class="text-muted mb-0">Menunggu Persetujuan</h6>
                     <div class="p-2 bg-warning bg-opacity-10 rounded-circle">
                         <i class="bi bi-hourglass-split text-warning"></i>
                     </div>
                 </div>
                 <h3 class="fw-bold mb-1"><?= $stats['pending_approvals'] ?? 0 ?></h3>
                 <small class="text-danger fw-medium">
-                    Needs attention
+                    Perlu perhatian
                 </small>
             </div>
         </div>
@@ -72,8 +72,8 @@
         <div class="card border-0 shadow-sm">
             <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center py-3">
                 <div>
-                    <h5 class="card-title mb-1 fw-bold">Recent Activity</h5>
-                    <p class="text-muted small mb-0">Latest system events and updates</p>
+                    <h5 class="card-title mb-1 fw-bold">Aktivitas Terbaru</h5>
+                    <p class="text-muted small mb-0">Acara dan pembaruan sistem terbaru</p>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -81,13 +81,15 @@
                     <table class="table table-hover align-middle mb-0">
                         <thead class="bg-light">
                             <tr>
-                                <th class="ps-4 text-uppercase text-secondary text-xs font-weight-bolder opacity-7">User
+                                <th class="ps-4 text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                    Pengguna
                                 </th>
-                                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Action
+                                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Aksi
                                 </th>
-                                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Module
+                                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Modul
                                 </th>
-                                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Time</th>
+                                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Waktu
+                                </th>
                                 <th
                                     class="text-end pe-4 text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                     Status</th>
@@ -96,7 +98,7 @@
                         <tbody>
                             <?php if (empty($recentActivity)): ?>
                                 <tr>
-                                    <td colspan="5" class="text-center py-4 text-muted">No recent activity found</td>
+                                    <td colspan="5" class="text-center py-4 text-muted">Tidak ada aktivitas terbaru</td>
                                 </tr>
                             <?php else: ?>
                                 <?php foreach ($recentActivity as $activity): ?>

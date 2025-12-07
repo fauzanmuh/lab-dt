@@ -65,32 +65,62 @@
         <h2 class="fw-bold display-5 mb-5">Meet Our Team</h2>
 
         <!-- Team Members -->
-        <div class="row justify-content-center g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="card-modern h-100 text-center p-4">
-                    <img src="/assets/images/kepala-lab.png" class="rounded-circle mb-3 shadow-sm"
-                        style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #f8f9fa;">
-                    <h4 class="fw-bold mb-1" style="font-size: 1.25rem;">Nama Lengkap</h4>
-                    <p class="text-muted mb-0" style="font-size: 0.9rem;">Kepala Laboratorium</p>
-                </div>
+
+        <!-- Head of Lab -->
+        <?php if (!empty($headOfLab)): ?>
+            <div class="row justify-content-center mb-5">
+                <?php foreach ($headOfLab as $member): ?>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="/member/<?= $member['id_anggota'] ?>" class="text-decoration-none text-dark">
+                            <div class="card-modern h-100 text-center p-4 transition-hover border-primary border-2">
+                                <?php if (!empty($member['foto_profil'])): ?>
+                                    <img src="/uploads/foto_profil/<?= htmlspecialchars($member['foto_profil']) ?>"
+                                        class="rounded-circle mb-3 shadow-lg"
+                                        style="width: 180px; height: 180px; object-fit: cover; border: 4px solid #7ABC52;">
+                                <?php else: ?>
+                                    <div class="rounded-circle mb-3 shadow-lg mx-auto d-flex align-items-center justify-content-center bg-primary text-white"
+                                        style="width: 180px; height: 180px; border: 4px solid #7ABC52; font-size: 3.5rem;">
+                                        <?= strtoupper(substr($member['nama_lengkap'], 0, 1)) ?>
+                                    </div>
+                                <?php endif; ?>
+                                <h3 class="fw-bold mb-1" style="font-size: 1.5rem;">
+                                    <?= htmlspecialchars($member['nama_lengkap']) ?>
+                                </h3>
+                                <p class="text-primary fw-bold mb-0" style="font-size: 1rem;">Kepala Laboratorium</p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card-modern h-100 text-center p-4">
-                    <img src="/assets/images/kepala-lab.png" class="rounded-circle mb-3 shadow-sm"
-                        style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #f8f9fa;">
-                    <h4 class="fw-bold mb-1" style="font-size: 1.25rem;">Nama Lengkap</h4>
-                    <p class="text-muted mb-0" style="font-size: 0.9rem;">Asisten Laboratorium</p>
-                </div>
+        <?php endif; ?>
+
+        <!-- Lab Members -->
+        <?php if (!empty($labMembers)): ?>
+            <div class="row justify-content-center g-4">
+                <?php foreach ($labMembers as $member): ?>
+                    <div class="col-md-6 col-lg-3">
+                        <a href="/member/<?= $member['id_anggota'] ?>" class="text-decoration-none text-dark">
+                            <div class="card-modern h-100 text-center p-4 transition-hover">
+                                <?php if (!empty($member['foto_profil'])): ?>
+                                    <img src="/uploads/foto_profil/<?= htmlspecialchars($member['foto_profil']) ?>"
+                                        class="rounded-circle mb-3 shadow-sm"
+                                        style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #f8f9fa;">
+                                <?php else: ?>
+                                    <div class="rounded-circle mb-3 shadow-sm mx-auto d-flex align-items-center justify-content-center bg-secondary text-white"
+                                        style="width: 150px; height: 150px; border: 4px solid #f8f9fa; font-size: 3rem;">
+                                        <?= strtoupper(substr($member['nama_lengkap'], 0, 1)) ?>
+                                    </div>
+                                <?php endif; ?>
+                                <h4 class="fw-bold mb-1" style="font-size: 1.25rem;">
+                                    <?= htmlspecialchars($member['nama_lengkap']) ?>
+                                </h4>
+                                <p class="text-muted mb-0" style="font-size: 0.9rem;">Anggota Laboratorium</p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card-modern h-100 text-center p-4">
-                    <img src="/assets/images/kepala-lab.png" class="rounded-circle mb-3 shadow-sm"
-                        style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #f8f9fa;">
-                    <h4 class="fw-bold mb-1" style="font-size: 1.25rem;">Nama Lengkap</h4>
-                    <p class="text-muted mb-0" style="font-size: 0.9rem;">Researcher</p>
-                </div>
-            </div>
-        </div>
+        <?php endif; ?>
 
         <!-- Button -->
         <a href="/about" class="btn btn-modern btn-outline-custom mt-5"
@@ -120,28 +150,61 @@
                 <div class="d-flex flex-column gap-4">
 
                     <!-- Vision Card -->
-                    <div class="card-modern d-flex flex-row align-items-start p-4">
-                        <div class="feature-icon-box flex-shrink-0 me-4">
-                            <i class="bi bi-eye"></i>
+                    <div class="card-modern p-4 mb-4 bg-white shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3"
+                                style="width: 50px; height: 50px; background-color: #7ABC52; color: white;">
+                                <i class="bi bi-lightning-fill fs-4"></i>
+                            </div>
+                            <h3 class="fw-bold mb-0">Vision</h3>
                         </div>
-                        <div>
-                            <h3 class="fw-bold mb-2">Vision</h3>
-                            <p class="text-muted mb-0" style="line-height: 1.7;">
+                        <div class="p-4 rounded-3" style="background-color: #E8F5E9;">
+                            <div class="text-dark mb-0" style="line-height: 1.7;">
                                 <?= $visi['isi_konten'] ?>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Mission Card -->
-                    <div class="card-modern d-flex flex-row align-items-start p-4">
-                        <div class="feature-icon-box flex-shrink-0 me-4">
-                            <i class="bi bi-bullseye"></i>
+                    <div class="card-modern p-4 bg-white shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 50px; height: 50px; background-color: #7ABC52; color: white;">
+                                <i class="bi bi-lightning-fill fs-4"></i>
+                            </div>
+                            <h3 class="fw-bold mb-0">Mission</h3>
                         </div>
-                        <div>
-                            <h3 class="fw-bold mb-2">Mission</h3>
-                            <p class="text-muted mb-0" style="line-height: 1.7;">
-                                <?= $misi['isi_konten'] ?>
-                            </p>
-                        </div>
+                        
+                        <?php
+                        // Parse Mission Content to split by points
+                        $missionPoints = [];
+                        $content = $misi['isi_konten'];
+                        
+                        if (strpos($content, '<li') !== false) {
+                            preg_match_all('/<li[^>]*>(.*?)<\/li>/is', $content, $matches);
+                            $missionPoints = $matches[1];
+                        } elseif (strpos($content, '<p') !== false) {
+                            preg_match_all('/<p[^>]*>(.*?)<\/p>/is', $content, $matches);
+                            $missionPoints = $matches[1];
+                        }
+                        ?>
+
+                        <?php if (!empty($missionPoints)): ?>
+                            <?php $idx = 1; foreach ($missionPoints as $point): ?>
+                                <div class="p-3 rounded-3 mb-2" style="background-color: #E8F5E9;">
+                                    <div class="text-dark mb-0 d-flex" style="line-height: 1.7;">
+                                        <span class="fw-bold me-2"><?= $idx++ ?>.</span>
+                                        <div><?= strip_tags($point, '<b><strong><i><em><u><span>') ?></div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="p-4 rounded-3" style="background-color: #E8F5E9;">
+                                <div class="text-dark mb-0" style="line-height: 1.7;">
+                                    <?= $misi['isi_konten'] ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                 </div>

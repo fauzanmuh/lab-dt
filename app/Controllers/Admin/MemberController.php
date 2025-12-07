@@ -28,7 +28,7 @@ class MemberController extends Controller
             'members' => $members,
             'pagination' => $pagination,
             'baseUrl' => '/admin/members',
-            'pageTitle' => 'Members Management',
+            'pageTitle' => 'Manajemen Anggota',
             'layout' => 'layouts/admin'
         ]);
     }
@@ -53,6 +53,7 @@ class MemberController extends Controller
         }
 
         $this->memberModel->createMember($data);
+        $_SESSION['flash_success'] = 'Anggota berhasil ditambahkan.';
         $this->redirect('/admin/members');
     }
 
@@ -83,6 +84,7 @@ class MemberController extends Controller
         }
 
         $this->memberModel->updateMember($id, $data);
+        $_SESSION['flash_success'] = 'Anggota berhasil diperbarui.';
         $this->redirect('/admin/members');
     }
 
@@ -95,6 +97,7 @@ class MemberController extends Controller
         }
 
         $this->memberModel->deleteMember($id);
+        $_SESSION['flash_success'] = 'Anggota berhasil dihapus.';
         $this->redirect('/admin/members');
     }
 }

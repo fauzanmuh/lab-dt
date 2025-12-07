@@ -50,13 +50,32 @@
                                     <span class="text-secondary text-sm"><?= $pub['tahun_terbit'] ?></span>
                                 </td>
                                 <td>
-                                    <span class="text-secondary text-sm"><?= htmlspecialchars($pub['nama_penulis']) ?></span>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="avatar-sm bg-light rounded-circle overflow-hidden"
+                                            style="width: 32px; height: 32px;">
+                                            <?php if (!empty($pub['foto_profil'])): ?>
+                                                <img src="/uploads/foto_profil/<?= htmlspecialchars($pub['foto_profil']) ?>"
+                                                    alt="Profile" class="w-100 h-100 object-fit-cover">
+                                            <?php else: ?>
+                                                <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary fw-bold"
+                                                    style="font-size: 0.8rem;">
+                                                    <?= strtoupper(substr($pub['nama_penulis'], 0, 1)) ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span
+                                                class="text-sm fw-medium text-dark"><?= htmlspecialchars($pub['nama_penulis']) ?></span>
+                                            <span
+                                                class="text-xs text-muted">@<?= htmlspecialchars($pub['username'] ?? '') ?></span>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td>
                                     <?php if ($pub['status'] === 'approved'): ?>
-                                        <span class="badge bg-success-subtle text-success">Approved</span>
+                                        <span class="badge bg-success-subtle text-success">Disetujui</span>
                                     <?php elseif ($pub['status'] === 'rejected'): ?>
-                                        <span class="badge bg-danger-subtle text-danger">Rejected</span>
+                                        <span class="badge bg-danger-subtle text-danger">Ditolak</span>
                                         <?php if (!empty($pub['catatan_admin'])): ?>
                                             <div class="mt-1 text-xs text-danger">
                                                 <i class="bi bi-exclamation-circle me-1"></i>
@@ -64,7 +83,7 @@
                                             </div>
                                         <?php endif; ?>
                                     <?php else: ?>
-                                        <span class="badge bg-warning-subtle text-warning">Pending</span>
+                                        <span class="badge bg-warning-subtle text-warning">Tertunda</span>
                                     <?php endif; ?>
                                 </td>
                                 <td class="text-end pe-4">
@@ -147,13 +166,13 @@
                             </div>
                         <?php endif; ?>
                         <div class="col-md-12 mb-3">
-                            <label for="link_publikasi" class="form-label">Link (Optional)</label>
+                            <label for="link_publikasi" class="form-label">Tautan</label>
                             <input type="url" class="form-control" id="link_publikasi" name="link_publikasi"
-                                placeholder="https://...">
+                                placeholder="https://..." required>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="deskripsi" class="form-label">Description (Optional)</label>
-                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -210,20 +229,24 @@
                                 <select class="form-select" id="edit_status" name="status">
                                     <option value="pending">Pending</option>
                                     <option value="approved">Approved</option>
-                                    <option value="rejected">Rejected</option>
+                                    <option value="pending">Tertunda</option>
+                                    <option value="approved">Disetujui</option>
+                                    <option value="rejected">Ditolak</option>
                                 </select>
                             </div>
                         <?php endif; ?>
                         <div class="col-md-12 mb-3">
-                            <label for="edit_link_publikasi" class="form-label">Link (Optional)</label>
-                            <input type="url" class="form-control" id="edit_link_publikasi" name="link_publikasi">
+                            <label for="edit_link_publikasi" class="form-label">Tautan</label>
+                            <input type="url" class="form-control" id="edit_link_publikasi" name="link_publikasi"
+                                required>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="edit_deskripsi" class="form-label">Description (Optional)</label>
-                            <textarea class="form-control" id="edit_deskripsi" name="deskripsi" rows="3"></textarea>
+                            <label for="edit_deskripsi" class="form-label">Deskripsi</label>
+                            <textarea class="form-control" id="edit_deskripsi" name="deskripsi" rows="3"
+                                required></textarea>
                         </div>
                         <div class="col-md-12 mb-3" id="pub_rejection_note_container" style="display: none;">
-                            <label class="form-label text-danger">Rejection Note</label>
+                            <label class="form-label text-danger">Catatan Penolakan</label>
                             <div class="alert alert-danger bg-danger-subtle border-danger text-danger p-2 mb-0 text-sm"
                                 id="pub_rejection_note"></div>
                         </div>
