@@ -58,13 +58,15 @@
                     <a class="nav-link" href="#">Acara</a>
                 </li>
             </ul>
-            <div class="input-group w-25">
-                <input type="text" class="form-control" style="background-color: #F0F0F0;" placeholder="Search articles"
-                    aria-label="Search" aria-describedby="button-search">
-                <button class="btn btn-secondary" type="submit" id="button-search">
-                    <i class="bi bi-search"></i>
-                </button>
-            </div>
+            <form method="GET" action="/news">
+                <div class="input-group w-100">
+                    <input type="text" name="search" value="<?= htmlspecialchars($keyword ?? '') ?>"
+                        class="form-control" style="background-color: #F0F0F0;" placeholder="Search articles">
+                    <button class="btn btn-secondary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
         </div>
 
         <div class="row g-4 mb-5">
@@ -95,4 +97,55 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center align-items-center mx-auto mt-4 p-2 rounded-3 custom-pagination"
+                style="width: fit-content; background-color: #F0F0F0;">
+
+                <!-- Prev Arrow -->
+                <li class="page-item <?= $pagination->getCurrentPage() <= 1 ? 'disabled' : '' ?>">
+                    <a class="page-link arrow"
+                        href="/news?page=<?= $pagination->getCurrentPage() - 1 ?>&search=<?= urlencode($keyword ?? '') ?>">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+
+                <!-- Numbered Pages -->
+                <?php
+                $totalPages = $pagination->getTotalPages();
+                $current = $pagination->getCurrentPage();
+
+                // Biar nggak kebanyakan page number
+                for ($i = 1; $i <= $totalPages; $i++):
+                    if ($i == 1 || $i == $totalPages || ($i >= $current - 1 && $i <= $current + 1)):
+                        ?>
+                        <li class="page-item <?= $i == $current ? 'active' : '' ?>">
+                            <a class="page-link" href="/news?page=<?= $i ?>&search=<?= urlencode($keyword ?? '') ?>">
+                                <?= $i ?>
+                            </a>
+                        </li>
+                        <?php
+                    elseif ($i == 2 && $current > 3):
+                        ?>
+                        <li class="page-item"><a class="page-link">...</a></li>
+                        <?php
+                    elseif ($i == $totalPages - 1 && $current < $totalPages - 2):
+                        ?>
+                        <li class="page-item"><a class="page-link">...</a></li>
+                        <?php
+                    endif;
+                endfor;
+                ?>
+
+                <!-- Next Arrow -->
+                <li class="page-item <?= $current >= $totalPages ? 'disabled' : '' ?>">
+                    <a class="page-link arrow"
+                        href="/news?page=<?= $pagination->getCurrentPage() + 1 ?>&search=<?= urlencode($keyword ?? '') ?>">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
     </div>

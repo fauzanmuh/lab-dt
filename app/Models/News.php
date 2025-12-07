@@ -86,6 +86,33 @@ class News extends Model
         return $this->db->query($sql);
     }
 
+    public function searchNews($keyword, $limit, $offset)
+    {
+        $sql = "SELECT b.*, a.nama_lengkap as penulis, a.foto_profil, a.username 
+            FROM {$this->table} b
+            JOIN anggota a ON b.id_penulis = a.id_anggota
+            WHERE b.status = 'approved'
+              AND b.judul LIKE :keyword
+            ORDER BY b.tanggal_posting DESC
+            LIMIT :limit OFFSET :offset";
+
+        return $this->db->query($sql, [
+            'keyword' => "%$keyword%",
+            'limit' => $limit,
+            'offset' => $offset
+        ]);
+    }
+
+    public function countSearchNews($keyword)
+    {
+        $sql = "SELECT COUNT(*) as total
+            FROM {$this->table}
+            WHERE status = 'approved' AND judul LIKE :keyword";
+
+        $result = $this->db->query($sql, ['keyword' => "%$keyword%"]);
+        return $result[0]['total'] ?? 0;
+    }
+
     public function createNews($data)
     {
         $sql = "INSERT INTO {$this->table} (judul, slug, isi_berita, gambar_utama, id_penulis, status) 
