@@ -4,7 +4,8 @@
         <div class="row g-4 mb-5">
             <div class="col-12 col-lg-7 col-xl-8">
                 <div class="position-relative overflow-hidden rounded-4">
-                    <img src="/assets/images/frame.png" alt="" class="w-100 img-fluid rounded-4">
+                    <img src="/<?= str_replace(' ', '%20', $latest['gambar_utama']) ?>"
+                        alt="<?= htmlspecialchars($latest['judul']) ?>" class="w-100 img-fluid rounded-4">
                     <span class="position-absolute top-0 start-0 m-3 p-2 badge bg-white" style="color: #0F9ECC;">
                         Artikel Terbaru
                     </span>
@@ -12,58 +13,30 @@
                     <!-- Content -->
                     <div class="position-absolute bottom-0 start-0 end-0 p-3 text-white text-wrap">
                         <h5 class="fw-semibold mb-1">
-                            Handino mendapatkan juara 1 olimpiade matematika se asia Tenggara
+                            <?= htmlspecialchars($latest['judul']) ?>
                         </h5>
                         <p class="mb-0 small text-truncate">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare condimentum lectus
-                            euismod porttitor. Suspendisse ultricies velit tellus, quis porta quam mollis. Lorem ipsum
-                            dolor sit amet consectetur adipisicing elit. Inventore facilis itaque illo odio voluptate
-                            nobis nihil facere labore. Minus tenetur enim commodi dignissimos obcaecati aliquam ipsum
-                            architecto nostrum fugit vitae?
+                            <?= htmlspecialchars($latest['isi_berita']) ?>
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-5 col-xl-4 d-flex flex-column gap-3">
-                <div class="border rounded-3 p-3 d-flex align-items-center gap-2">
-                    <img src="/assets/images/frame.png" alt="News Image" class="rounded-3"
-                        style="width: 148px; height: auto; object-fit: cover;">
-                    <div class="d-flex flex-column justify-content-between">
-                        <div class="d-flex justify-content-between align-items-center mb-2" style="font-size: 12px;">
-                            <p class="m-0">15 Jan, 2024</p>
-                            <p class="m-0">5 Min read</p>
+                <?php foreach ($others as $o): ?>
+                    <div class="border rounded-3 p-3 d-flex align-items-center gap-2">
+                        <img src="/<?= str_replace(' ', '%20', $o['gambar_utama']) ?>" alt="News Image" class="rounded-3"
+                            style="width: 148px; height: auto; object-fit: cover;">
+                        <div class="d-flex flex-column justify-content-between w-100">
+                            <div class="d-flex justify-content-between align-items-center mb-2" style="font-size: 12px;">
+                                <p class="m-0"><?= date('d M, Y', strtotime($o['tanggal_posting'])) ?></p>
+                                <p class="m-0">5 Min read</p>
+                            </div>
+                            <p class="m-0 fw-semibold" style="font-size: 14px; color: #0F9ECC;">
+                                <?= htmlspecialchars($o['judul']) ?>
+                            </p>
                         </div>
-                        <p class="m-0 fw-semibold" style="font-size: 14px; color: #0F9ECC;">Handino mendapatkan juara 1
-                            olimpiade
-                            matematika se asia Tenggara</p>
                     </div>
-                </div>
-                <div class="border rounded-3 p-3 d-flex align-items-center gap-2">
-                    <img src="/assets/images/frame.png" alt="News Image" class="rounded-3"
-                        style="width: 148px; height: auto; object-fit: cover;">
-                    <div class="d-flex flex-column justify-content-between">
-                        <div class="d-flex justify-content-between align-items-center mb-2" style="font-size: 12px;">
-                            <p class="m-0">15 Jan, 2024</p>
-                            <p class="m-0">5 Min read</p>
-                        </div>
-                        <p class="m-0 fw-semibold" style="font-size: 14px; color: #0F9ECC;">Handino mendapatkan juara 1
-                            olimpiade
-                            matematika se asia Tenggara</p>
-                    </div>
-                </div>
-                <div class="border rounded-3 p-3 d-flex align-items-center gap-2">
-                    <img src="/assets/images/frame.png" alt="News Image" class="rounded-3"
-                        style="width: 148px; height: auto; object-fit: cover;">
-                    <div class="d-flex flex-column justify-content-between">
-                        <div class="d-flex justify-content-between align-items-center mb-2" style="font-size: 12px;">
-                            <p class="m-0">15 Jan, 2024</p>
-                            <p class="m-0">5 Min read</p>
-                        </div>
-                        <p class="m-0 fw-semibold" style="font-size: 14px; color: #0F9ECC;">Handino mendapatkan juara 1
-                            olimpiade
-                            matematika se asia Tenggara</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
 

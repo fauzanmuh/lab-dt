@@ -61,6 +61,31 @@ class News extends Model
         return $result[0] ?? null;
     }
 
+    public function getLatestNews()
+    {
+        $sql = "SELECT b.*, a.nama_lengkap AS penulis, a.foto_profil, a.username
+            FROM {$this->table} b
+            JOIN anggota a ON b.id_penulis = a.id_anggota
+            WHERE b.status = 'approved'
+            ORDER BY b.tanggal_posting DESC
+            LIMIT 1";
+
+        $result = $this->db->query($sql);
+        return $result[0] ?? null;
+    }
+
+    public function getOtherNewsAfterLatest()
+    {
+        $sql = "SELECT b.*, a.nama_lengkap AS penulis, a.foto_profil, a.username
+            FROM {$this->table} b
+            JOIN anggota a ON b.id_penulis = a.id_anggota
+            WHERE b.status = 'approved'
+            ORDER BY b.tanggal_posting DESC
+            LIMIT 3 OFFSET 1";
+
+        return $this->db->query($sql);
+    }
+
     public function createNews($data)
     {
         $sql = "INSERT INTO {$this->table} (judul, slug, isi_berita, gambar_utama, id_penulis, status) 

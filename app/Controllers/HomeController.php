@@ -122,10 +122,14 @@ class HomeController extends Controller
         $pagination = new Pagination($total, $limit, $page);
 
         $news = $this->newsModel->getApprovedNews($limit, $pagination->getOffset());
+        $latest = $this->newsModel->getLatestNews();
+        $others = $this->newsModel->getOtherNewsAfterLatest();
 
         return $this->view('news', [
             'title' => 'News - Profile Lab DT',
             'news' => $news,
+            'latest' => $latest,
+            'others' => $others,
             'pagination' => $pagination,
             'baseUrl' => '/news'
         ]);
