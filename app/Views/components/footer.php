@@ -6,7 +6,8 @@
                     <img src="/assets/images/dt-logo.png" alt="dt-logo" style="width: 105px; height: 56px;"
                         class="mb-3">
                     <p class="text-white" style="font-size: 14px;">
-                        <?= htmlspecialchars($infoLab['deskripsi'] ?? 'Deskripsi Lab belum diatur.') ?></p>
+                        <?= htmlspecialchars($infoLab['deskripsi'] ?? 'Deskripsi Lab belum diatur.') ?>
+                    </p>
                     <div class="d-flex align-items-center gap-4">
                         <?php if (!empty($infoLab['link_linkedin'])): ?>
                             <a href="<?= htmlspecialchars($infoLab['link_linkedin']) ?>" target="_blank"><i
@@ -36,13 +37,13 @@
                     <h2 class="text-white fw-semibold mb-4" style="font-size: 24px;">
                         <?= htmlspecialchars($infoLab['nama_lab'] ?? 'DATA TECHNOLOGY LAB') ?>
                     </h2>
-                    <div class="d-flex flex-column gap-3">
+                    <div class="d-flex flex-column gap-3" style="z-index: 50;">
                         <a href="/" class="text-white text-uppercase text-decoration-none">Beranda</a>
-                        <a href="/" class="text-white text-uppercase text-decoration-none">Tentang Kami</a>
-                        <a href="/" class="text-white text-uppercase text-decoration-none">Fasilitas</a>
-                        <a href="/" class="text-white text-uppercase text-decoration-none">Galeri</a>
-                        <a href="/" class="text-white text-uppercase text-decoration-none">Publikasi</a>
-                        <a href="/" class="text-white text-uppercase text-decoration-none">Berita</a>
+                        <a href="/about" class="text-white text-uppercase text-decoration-none">Tentang Kami</a>
+                        <a href="/facility" class="text-white text-uppercase text-decoration-none">Fasilitas</a>
+                        <a href="/gallery" class="text-white text-uppercase text-decoration-none">Galeri</a>
+                        <a href="/publications" class="text-white text-uppercase text-decoration-none">Publikasi</a>
+                        <a href="/news" class="text-white text-uppercase text-decoration-none">Berita</a>
                     </div>
                 </div>
             </div>
